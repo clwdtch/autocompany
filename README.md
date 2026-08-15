@@ -23,7 +23,8 @@ O MVA é um ponto de partida. O usuário pode posteriormente adicionar Áreas, a
 | [`COMPANY_STRUCTURE.md`](./COMPANY_STRUCTURE.md) | Estrutura organizacional, dados, agentes, fluxos e critérios do MVA |
 | [`AGENTS_CREATION_INSTRUCTIONS.md`](./AGENTS_CREATION_INSTRUCTIONS.md) | Regras e templates para criar instruções enxutas para cada agente |
 | [`STANDARD_GUARDRAILS.md`](./STANDARD_GUARDRAILS.md) | Proteções mínimas aplicáveis à Company e aos agentes |
-| [`BUSINESS_METHOD.md`](./BUSINESS_METHOD.md) | Biblioteca de Areas de negócio, com etapas, triggers e momento de criação pelo CEO |
+| [`EXPANSION_RULES.md`](./EXPANSION_RULES.md) | Regras usadas pelo CEO para decidir quando propor e ativar novas Areas |
+| [`AREA_LIBRARY.md`](./AREA_LIBRARY.md) | Catálogo das Areas de negócio disponíveis |
 
 `Plugin Base` e outras integrações são extensões opcionais. A implantação inicial do MVA não pode depender delas.
 

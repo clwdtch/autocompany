@@ -1,6 +1,6 @@
 # Company Structure — Minimum Viable Autonomy
 
-**Versão:** 2.1  
+**Versão:** 2.2  
 **Finalidade:** definir a estrutura organizacional mínima que permite orientação a objetivos, operação agêntica e autoaprendizado progressivo.
 
 ## 1. Minimum Viable Autonomy
@@ -83,7 +83,8 @@ O repo contém o padrão reutilizável:
 - Company Structure;
 - Agents Creation Instructions;
 - Standard Guardrails;
-- Business Method;
+- Expansion Rules;
+- Area Library;
 - referências opcionais de infraestrutura, plugins e skills.
 
 O repo é fonte de padrão, não memória operacional da Company.
@@ -191,7 +192,7 @@ O CEO é responsável por conduzir a Company em direção aos Goals dentro dos G
 Responsabilidades mínimas:
 
 - manter Goals, Company Data e estrutura coerentes;
-- consultar Business Method para identificar quais capacidades de negócio devem virar Areas agora e quais devem permanecer futuras;
+- aplicar Expansion Rules e consultar Area Library para identificar quais capacidades devem virar Areas agora e quais devem permanecer futuras;
 - criar Area Leaders;
 - criar ou autorizar agentes conforme Agents Creation Instructions;
 - conectar skills e ferramentas autorizadas;
@@ -255,7 +256,7 @@ Uma Area pode representar:
 
 O nome da Area é apenas um rótulo. Seu contrato real é o `Area Settings`, especialmente Purpose, Scope, Out of Scope, Goals, Metrics e Decision Rights.
 
-Não crie uma Area apenas porque ela existe em organogramas tradicionais ou aparece como template no Business Method. A separação precisa demonstrar ao menos um dos seguintes motivos:
+Não crie uma Area apenas porque ela existe em organogramas tradicionais ou aparece na Area Library. A separação precisa demonstrar ao menos um dos seguintes motivos:
 
 - objetivo próprio e mensurável;
 - conhecimento, dados, skills ou guardrails específicos;
@@ -309,7 +310,7 @@ A Company não cria toda a árvore antecipadamente. Ela começa no nível mínim
 
 #### Criar
 
-Crie uma Area quando uma capacidade necessária a um Goal não estiver adequadamente coberta e os critérios da seção 7.2 forem satisfeitos. O `BUSINESS_METHOD.md` pode fornecer o template e o momento; esta seção determina se a separação estrutural é válida.
+Crie uma Area quando uma capacidade necessária a um Goal não estiver adequadamente coberta e os critérios da seção 7.2 forem satisfeitos. `AREA_LIBRARY.md` pode fornecer a candidata, `EXPANSION_RULES.md` determina se o momento de ativação é válido e esta seção determina se a separação estrutural é válida.
 
 #### Dividir
 
@@ -360,11 +361,11 @@ CEO, Area Leader ou Learning podem propor criação, divisão, combinação, pau
 
 Learning registra e propõe; não aplica mudança estrutural autonomamente. Mudanças materiais seguem `STANDARD_GUARDRAILS.md` e são registradas no Company Decision Log.
 
-### 7.6 Fronteira com Business Method
+### 7.6 Fronteira com expansão e biblioteca
 
-`BUSINESS_METHOD.md` é a biblioteca de Areas de negócio e de seus momentos de ativação. Ele ajuda o CEO a identificar **o que pode ser criado e quando**.
-
-`COMPANY_STRUCTURE.md` define **como qualquer Area é formada, opera, evolui e se relaciona com a Company**.
+- `AREA_LIBRARY.md` define **quais Areas estão disponíveis no catálogo**.
+- `EXPANSION_RULES.md` define **quando uma candidata pode ser proposta e ativada**.
+- `COMPANY_STRUCTURE.md` define **como uma Area aprovada é formada, opera, evolui e se relaciona com a Company**.
 
 ## 8. Time de inteligência
 

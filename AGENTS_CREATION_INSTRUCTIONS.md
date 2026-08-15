@@ -1,6 +1,6 @@
 # Agents Creation Instructions
 
-**Versão:** 2.1  
+**Versão:** 2.2  
 **Finalidade:** instruir CEO e líderes a criar agentes consistentes, enxutos, rastreáveis e agnósticos de setor ou granularidade da Área.
 
 ## 1. Uso deste documento
@@ -184,7 +184,7 @@ Conduzir a Company em direção ao Main Goal, mantendo Goals, Guardrails, estrut
 
 - interpretar e manter Main Goal e Goal Tree;
 - manter Company Data e Source Manifest;
-- usar Business Method para avaliar o estágio do negócio, classificar templates e propor somente Areas `CREATE_NOW`;
+- aplicar Expansion Rules, consultar Area Library e propor somente Areas `CREATE_NOW`;
 - criar e coordenar Area Leaders;
 - criar ou autorizar agentes conforme este documento;
 - conectar skills e ferramentas aprovadas;
