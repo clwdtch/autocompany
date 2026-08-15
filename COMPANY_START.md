@@ -1,6 +1,6 @@
 # Company Start
 
-**Versão:** 1.0  
+**Versão:** 1.1  
 **Executor:** CEO da Company  
 **Finalidade:** planejar, implementar, validar e ativar o Minimum Viable Autonomy no Paperclip a partir deste padrão.
 
@@ -151,6 +151,8 @@ Se o modo não estiver explícito, assuma `PLAN`.
 - Inspecione o estado atual antes de criar qualquer entidade.
 - Não duplique Goals, Projects, agentes, documentos ou tasks.
 - Comece com a menor quantidade de Áreas necessária.
+- Não transforme toda a biblioteca do Business Method em Areas ativas.
+- Não crie Project, agentes, heartbeat ou budget para item classificado como `PREPARE_NEXT` ou `LATER`.
 - Crie agentes persistentes do MVA; crie collectors, squads e executores sob demanda.
 - Não execute ação externa operacional durante o bootstrap, salvo autorização específica.
 - Não aprove seu próprio plano quando aprovação humana for exigida.
@@ -224,10 +226,23 @@ Em modo `PLAN`, produza um plano contendo:
 
 ### 11.2 Áreas
 
-Utilize `BUSINESS_METHOD.md` para propor o menor conjunto de Area Candidates.
+Utilize `BUSINESS_METHOD.md` como biblioteca temporal de Areas de negócio.
+
+Antes de propor uma Area:
+
+1. produza o `Business Stage Assessment`;
+2. avalie todos os templates da biblioteca;
+3. classifique cada um como `CREATE_NOW`, `PREPARE_NEXT`, `ABSORBED`, `COMPLETE`, `LATER`, `SKIP` ou `BLOCKED`;
+4. registre evidência, Goal relacionado, dependências e trigger de reavaliação;
+5. transforme somente itens `CREATE_NOW` em Area Candidates;
+6. valide cada candidata pelos critérios de formação e granularidade de `COMPANY_STRUCTURE.md`.
+
+Itens `PREPARE_NEXT` e `LATER` permanecem no Area Activation Plan dentro de Company Data. Eles não recebem estrutura operacional durante o boot.
 
 Para cada Área:
 
+- template de origem ou justificativa de Area customizada;
+- trigger de ativação e evidências;
 - Purpose;
 - Scope e Out of Scope;
 - Goals e métricas;
@@ -238,6 +253,8 @@ Para cada Área:
 - agentes persistentes;
 - budget e skills iniciais;
 - razão para existir separadamente.
+
+O plano deve demonstrar por que as candidatas representam o menor conjunto capaz de sustentar o Main Goal e o MVA no momento atual.
 
 ### 11.3 Organograma
 
@@ -358,7 +375,7 @@ source_manifest:
 
 ## 13. Fase 4 — Implementar as Áreas
 
-Para cada Area Candidate aprovada:
+Para cada Area Candidate aprovada e classificada como `CREATE_NOW`:
 
 ### 13.1 Criar unidade da Área
 
@@ -552,6 +569,8 @@ company_start_report:
   completed_at: "{{timestamp}}"
   final_state: "OPERATIONAL | BOOTSTRAPPING | BLOCKED | DEGRADED"
   main_goal: "{{goal_id}}"
+  business_stage_assessment: "{{assessment_id}}"
+  area_activation_plan: "{{plan_id_and_version}}"
   company_data_status: "{{status}}"
   areas:
     - area_id: "{{id}}"
@@ -641,7 +660,7 @@ Após o MVA, o CEO e o usuário podem melhorar a Company por evidência:
 - adicionar skills e fontes;
 - criar collectors persistentes;
 - especializar agentes;
-- criar novas Áreas;
+- criar novas Áreas quando seus triggers de ativação forem satisfeitos;
 - dividir scopes amplos;
 - adicionar automações e plugins;
 - ajustar budgets e heartbeats;

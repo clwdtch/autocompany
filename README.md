@@ -23,7 +23,7 @@ O MVA é um ponto de partida. O usuário pode posteriormente adicionar Áreas, a
 | [`COMPANY_STRUCTURE.md`](./COMPANY_STRUCTURE.md) | Estrutura organizacional, dados, agentes, fluxos e critérios do MVA |
 | [`AGENTS_CREATION_INSTRUCTIONS.md`](./AGENTS_CREATION_INSTRUCTIONS.md) | Regras e templates para criar instruções enxutas para cada agente |
 | [`STANDARD_GUARDRAILS.md`](./STANDARD_GUARDRAILS.md) | Proteções mínimas aplicáveis à Company e aos agentes |
-| [`BUSINESS_METHOD.md`](./BUSINESS_METHOD.md) | Método para transformar objetivos e contexto em Áreas com Scope & Goals |
+| [`BUSINESS_METHOD.md`](./BUSINESS_METHOD.md) | Biblioteca de Areas de negócio, com etapas, triggers e momento de criação pelo CEO |
 
 `Plugin Base` e outras integrações são extensões opcionais. A implantação inicial do MVA não pode depender delas.
 
@@ -78,6 +78,7 @@ Ao final do boot, a Company deve possuir:
 - Goals & Guardrails acessíveis aos agentes;
 - Company Data instanciado;
 - CEO com instruções operacionais enxutas;
+- Business Stage Assessment e Area Activation Plan;
 - pelo menos uma Área necessária ao Main Goal;
 - Area Data para cada Área;
 - times mínimos de inteligência e execução;
@@ -90,4 +91,3 @@ Ao final do boot, a Company deve possuir:
 ## Princípio de implementação
 
 > O CEO não inventa uma empresa a partir de um prompt vago. Ele instancia um padrão, propõe a configuração específica, obtém as aprovações necessárias, implementa o estado aprovado e valida o resultado.
-

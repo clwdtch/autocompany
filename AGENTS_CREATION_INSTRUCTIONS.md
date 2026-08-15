@@ -1,6 +1,6 @@
 # Agents Creation Instructions
 
-**Versão:** 2.0  
+**Versão:** 2.1  
 **Finalidade:** instruir CEO e líderes a criar agentes consistentes, enxutos, rastreáveis e agnósticos de setor ou granularidade da Área.
 
 ## 1. Uso deste documento
@@ -184,7 +184,7 @@ Conduzir a Company em direção ao Main Goal, mantendo Goals, Guardrails, estrut
 
 - interpretar e manter Main Goal e Goal Tree;
 - manter Company Data e Source Manifest;
-- aplicar Business Method para propor, criar e revisar Áreas;
+- usar Business Method para avaliar o estágio do negócio, classificar templates e propor somente Areas `CREATE_NOW`;
 - criar e coordenar Area Leaders;
 - criar ou autorizar agentes conforme este documento;
 - conectar skills e ferramentas aprovadas;
@@ -198,6 +198,7 @@ Conduzir a Company em direção ao Main Goal, mantendo Goals, Guardrails, estrut
 
 - Company Implementation Plan;
 - Company Direction Record;
+- Business Stage Assessment e Area Activation Plan;
 - Area Candidates e Area Charters;
 - Resource Allocation Record;
 - Cross-Area Decision Record;

@@ -1,6 +1,6 @@
 # Company Structure — Minimum Viable Autonomy
 
-**Versão:** 2.0  
+**Versão:** 2.1  
 **Finalidade:** definir a estrutura organizacional mínima que permite orientação a objetivos, operação agêntica e autoaprendizado progressivo.
 
 ## 1. Minimum Viable Autonomy
@@ -191,7 +191,7 @@ O CEO é responsável por conduzir a Company em direção aos Goals dentro dos G
 Responsabilidades mínimas:
 
 - manter Goals, Company Data e estrutura coerentes;
-- utilizar Business Method para propor e revisar Áreas;
+- consultar Business Method para identificar quais capacidades de negócio devem virar Areas agora e quais devem permanecer futuras;
 - criar Area Leaders;
 - criar ou autorizar agentes conforme Agents Creation Instructions;
 - conectar skills e ferramentas autorizadas;
@@ -231,6 +231,140 @@ O Area Leader é dono do resultado da Área. Ele:
 - propõe evolução da Área.
 
 Não existe Intelligence Leader obrigatório no MVA. Uma Área pode criar coordenação adicional posteriormente quando volume ou complexidade justificarem.
+
+### 7.2 Formação e fronteira de uma Area
+
+Uma Area é uma unidade de responsabilidade com:
+
+- purpose e Scope próprios;
+- Goals ligados ao Main Goal;
+- success metrics;
+- owner identificado;
+- dados, arquivos e artefatos próprios;
+- decision rights e guardrails;
+- budget ou política de consumo;
+- capacidade de inteligência, execução e aprendizado.
+
+Uma Area pode representar:
+
+- uma função ampla, como Marketing ou Jurídico;
+- uma unidade de negócio, produto, mercado ou localização;
+- um processo recorrente;
+- um resultado específico;
+- uma capacidade temporária necessária a um Goal.
+
+O nome da Area é apenas um rótulo. Seu contrato real é o `Area Settings`, especialmente Purpose, Scope, Out of Scope, Goals, Metrics e Decision Rights.
+
+Não crie uma Area apenas porque ela existe em organogramas tradicionais ou aparece como template no Business Method. A separação precisa demonstrar ao menos um dos seguintes motivos:
+
+- objetivo próprio e mensurável;
+- conhecimento, dados, skills ou guardrails específicos;
+- trabalho recorrente suficiente;
+- decision rights distintos;
+- risco que justifica segregação;
+- budget ou responsável próprio;
+- ganho claro de foco, qualidade ou autonomia.
+
+Quando dois escopos possuem pouco volume, objetivos muito próximos e utilizam os mesmos dados, devem começar consolidados.
+
+### 7.3 Granularidade
+
+Considere dois eixos:
+
+- **Scope:** amplo ou específico;
+- **Goals:** abrangentes ou delimitados.
+
+Use uma Area ampla quando:
+
+- o volume inicial é baixo;
+- os processos ainda são desconhecidos;
+- a Company está aprendendo;
+- a separação criaria agentes ociosos;
+- os objetivos ainda são fortemente dependentes.
+
+Use uma Area específica quando:
+
+- existe alta frequência de trabalho;
+- o resultado pode ser medido isoladamente;
+- há dados, skills, budget ou guardrails próprios;
+- o escopo amplo gera conflito, gargalo ou baixa qualidade;
+- autonomia local reduz coordenação desnecessária.
+
+Exemplo de evolução possível:
+
+```text
+Marketing
+└── Redes Sociais
+    └── Instagram
+        ├── Carrossel
+        ├── Imagens
+        └── Vídeos
+            ├── Vídeos de depoimentos
+            └── Vídeos de notícias
+```
+
+A Company não cria toda a árvore antecipadamente. Ela começa no nível mínimo útil e especializa somente mediante evidência.
+
+### 7.4 Ciclo de vida estrutural
+
+#### Criar
+
+Crie uma Area quando uma capacidade necessária a um Goal não estiver adequadamente coberta e os critérios da seção 7.2 forem satisfeitos. O `BUSINESS_METHOD.md` pode fornecer o template e o momento; esta seção determina se a separação estrutural é válida.
+
+#### Dividir
+
+Considere dividir quando:
+
+- Scope & Goals deixarem de caber em um contrato claro;
+- o Area Leader se tornar gargalo recorrente;
+- existirem fluxos com dados, skills ou guardrails muito diferentes;
+- conflitos de prioridade se repetirem;
+- uma subcapacidade possuir volume e métricas próprios;
+- o aprendizado indicar ganho provável de autonomia.
+
+#### Combinar
+
+Considere combinar quando:
+
+- houver duplicação de agentes, dados ou decisões;
+- Goals se tornarem inseparáveis;
+- o volume não justificar estruturas distintas;
+- handoffs criarem mais custo do que valor;
+- as Areas utilizarem as mesmas skills, stakeholders e decision rights.
+
+#### Pausar ou encerrar
+
+Considere pausa ou encerramento quando:
+
+- o Goal for concluído ou removido;
+- não houver mais trabalho recorrente;
+- a Area deixar de contribuir ao Main Goal;
+- o custo superar o valor;
+- suas responsabilidades forem absorvidas por outra Area.
+
+Dados, decisões e aprendizados devem ser preservados conforme política de retenção. Pausa ou encerramento não autoriza exclusão silenciosa de histórico.
+
+### 7.5 Mudança estrutural
+
+CEO, Area Leader ou Learning podem propor criação, divisão, combinação, pausa ou encerramento. A proposta deve conter:
+
+- evidências observadas;
+- problema da estrutura atual;
+- relação com Goals;
+- mudança pretendida e resultado esperado;
+- custos, agentes, budgets e dependências afetados;
+- alternativa de não mudar;
+- riscos e impacto nos guardrails;
+- plano de migração e rollback;
+- aprovação necessária.
+
+Learning registra e propõe; não aplica mudança estrutural autonomamente. Mudanças materiais seguem `STANDARD_GUARDRAILS.md` e são registradas no Company Decision Log.
+
+### 7.6 Fronteira com Business Method
+
+`BUSINESS_METHOD.md` é a biblioteca de Areas de negócio e de seus momentos de ativação. Ele ajuda o CEO a identificar **o que pode ser criado e quando**.
+
+`COMPANY_STRUCTURE.md` define **como qualquer Area é formada, opera, evolui e se relaciona com a Company**.
 
 ## 8. Time de inteligência
 
@@ -489,4 +623,3 @@ Depois do MVA, a Company pode melhorar mediante evidência:
 - importar aprendizados cross-area.
 
 Toda evolução segue o ciclo de aprendizado e as aprovações aplicáveis.
-
