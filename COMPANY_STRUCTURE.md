@@ -1,1031 +1,492 @@
-# Company Structure — Empresa Autoevolutiva
+# Company Structure — Minimum Viable Autonomy
 
-**Versão:** 1.0  
-**Idioma:** Português  
-**Tipo:** documento normativo da empresa  
-**Finalidade:** descrever a estrutura organizacional, agêntica, informacional e operacional representada no esquema do Miro.
+**Versão:** 2.0  
+**Finalidade:** definir a estrutura organizacional mínima que permite orientação a objetivos, operação agêntica e autoaprendizado progressivo.
 
----
+## 1. Minimum Viable Autonomy
 
-## 1. Objetivo
+Minimum Viable Autonomy (MVA) é a composição mínima necessária para que exista um grau inicial de autonomia dos agentes na Company.
 
-Este documento define a estrutura padrão de uma empresa autoevolutiva operada por humanos, agentes, automações e sistemas.
+O MVA possui quatro requisitos:
 
-A estrutura foi desenhada para ser:
+1. **Orientação a objetivos**  
+   Goals & Guardrails são registrados na Company, ficam acessíveis aos agentes e orientam decisões e tasks.
 
-- **agnóstica de setor:** pode ser utilizada por empresas de qualquer mercado;
-- **agnóstica de conteúdo:** não contém regras específicas de Marketing, Jurídico, Produto ou qualquer outra função;
-- **agnóstica de tecnologia:** pode ser implementada em diferentes runtimes, modelos, plataformas e infraestruturas;
-- **recursiva:** a mesma lógica pode ser aplicada a Áreas amplas ou extremamente específicas;
-- **auditável:** decisões, ações e mudanças permanecem rastreáveis;
-- **autoevolutiva:** resultados alimentam um ciclo controlado de aprendizado e melhoria.
+2. **Base de conhecimento e agentes unificados**  
+   Documentos, dados, agentes, skills e suas versões possuem fontes conhecidas, acessíveis e organizadas.
 
-Este documento descreve **como a organização é estruturada**. As instruções detalhadas de cada agente estão no documento:
+3. **Times de inteligência e execução**  
+   A Company separa a produção de entendimento e decisões da execução das ações aprovadas.
 
-- [Agents Creation Instructions](./instrucoes-agentes-empresa-autoevolutiva.md)
+4. **Loops de aprendizado**  
+   A execução é analisada continuamente; resultados geram aprendizados registrados e incorporados aos ciclos seguintes mediante governança.
 
----
+O MVA não pretende representar a estrutura final. O usuário pode melhorar a Company gradualmente com novas Áreas, agentes especializados, skills, automações, integrações, budgets e políticas.
 
-## 2. Princípio central: a Área como unidade organizacional
+## 2. Fronteira do MVA
 
-A unidade operacional básica da empresa é a **Área**.
+São obrigatórios no boot:
 
-Uma Área representa um escopo de responsabilidade com objetivo, fronteiras, métricas, dados, agentes e autoridade próprios.
+- Goals & Guardrails;
+- CEO;
+- Company Data;
+- pelo menos uma Área ligada ao Main Goal;
+- Area Leader;
+- Area Data;
+- responsabilidades persistentes de Data, Analysis, Proposals, Definition, Execution Leader e Learning;
+- capacidade de criar Internal/External Teams, squads e executores sob demanda;
+- humano no circuito;
+- budgets, permissões, approvals e heartbeats mínimos;
+- rastreabilidade do Area Loop.
 
-Uma Área pode ser:
+Não são obrigatórios no boot:
 
-- uma função abrangente, como Jurídico ou Marketing;
-- uma unidade de negócio, produto, canal, segmento ou localização;
-- um processo, como análise de novos contratos de fornecedores;
-- uma capacidade específica, como produção de posts de vídeo para um canal;
-- uma iniciativa temporária;
-- uma subárea criada dentro de uma Área maior.
+- múltiplas Áreas sem necessidade comprovada;
+- coletores especializados persistentes;
+- squads ociosos;
+- automação integral de todos os processos;
+- custom plugins;
+- modelos locais;
+- reorganização automática;
+- aprendizado que modifica estrutura sem aprovação;
+- integrações além das necessárias para o primeiro ciclo.
 
-O nome da Área é apenas um rótulo. Seu significado operacional é definido pelo **Area Charter**, também chamado de **Contrato da Área**.
+## 3. Visão estrutural
 
-Toda Área deve possuir, no mínimo:
+```mermaid
+flowchart TD
+    H["Humano responsável"] --> GG["Goals & Guardrails"]
+    GG --> CEO["CEO"]
+    CD["Company Data"] --> CEO
+    CEO --> AL["Area Leader"]
+    AL --> D["Data"]
+    AL --> AN["Analysis"]
+    AL --> P["Proposals"]
+    AL --> DF["Definition"]
+    AL --> EL["Execution Leader"]
+    AL --> L["Learning"]
+    D --> IT["Internal Team on demand"]
+    D --> ET["External Team on demand"]
+    EL --> SL["Squad Leader on demand"]
+    SL --> EX["Executor Agents on demand"]
+```
 
-1. **Scope & Goals:** propósito, escopo, fora de escopo, objetivos e métricas.
-2. **Data/Docs:** dados, evidências, documentos e registros da Área.
-3. **Leadership:** um Area Leader responsável pelo resultado.
-4. **Intelligence:** agentes que transformam dados em decisões preparadas.
-5. **Execution:** agentes que transformam decisões aprovadas em trabalho realizado.
-6. **Learning:** mecanismo que compara resultado esperado e realizado.
-7. **Decision Rights:** limites de autoridade e aprovações necessárias.
+Este diagrama representa reporting lines. O fluxo de trabalho é descrito separadamente no Area Loop.
 
-Uma Área pequena pode compartilhar agentes ou infraestrutura com outras Áreas. Ainda assim, seu escopo, dados, tarefas, decisões e resultados devem permanecer identificáveis.
+## 4. Camadas de estado
 
----
+### 4.1 Repo fonte
 
-## 3. Camadas da empresa autoevolutiva
+O repo contém o padrão reutilizável:
 
-A empresa é organizada em três camadas principais.
+- Company Start;
+- Company Structure;
+- Agents Creation Instructions;
+- Standard Guardrails;
+- Business Method;
+- referências opcionais de infraestrutura, plugins e skills.
 
-### 3.1 Camada Humana
+O repo é fonte de padrão, não memória operacional da Company.
 
-A Camada Humana fornece:
+### 4.2 Company Data
 
-- propósito;
-- valores;
-- responsabilidade final;
-- legitimidade;
-- relações humanas e institucionais;
-- julgamento em situações não delegadas;
-- aprovação de mudanças fundamentais.
-
-Humanos podem atuar como fundadores, proprietários, conselheiros, responsáveis legais, especialistas, operadores ou aprovadores.
-
-A existência de um CEO agêntico não elimina a responsabilidade humana. Ela desloca parte da coordenação e da operação para agentes dentro de limites explícitos.
-
-### 3.2 Camada de Negócio
-
-A Camada de Negócio define:
+Company Data existe somente dentro da Company instanciada. Deve conter ou referenciar:
 
 - Company Description;
-- Main Goal;
-- métricas corporativas;
-- Business Method;
-- Company Structure;
-- Áreas e seus objetivos;
+- Goals & Guardrails;
+- cópia ativa de Standard Guardrails;
+- CEO Additional Instructions;
+- Company Config;
+- Skill Registry;
+- Source Manifest com repo, branch, commit e versão;
+- Company Decision Log;
+- Company Learning Log;
+- registros de budgets, approvals e mudanças estruturais;
+- referências às Áreas e seus estados.
+
+Company Data é acessível conforme permissões. A existência de acesso de leitura não concede direito de alteração.
+
+### 4.3 Area Data
+
+Cada Área possui Area Data isolado logicamente, contendo:
+
+#### Area Settings
+
+- descrição;
+- purpose;
+- scope e out of scope;
+- goals e success metrics;
 - guardrails;
-- direitos de decisão;
-- alocação de recursos;
-- fluxos de inteligência e execução;
-- critérios de criação, alteração e encerramento de estruturas.
-
-### 3.3 Camada de Tecnologia
-
-A Camada de Tecnologia sustenta a operação da empresa e possui duas partes.
-
-#### 3.3.1 Infraestrutura
-
-Inclui, de forma agnóstica:
-
-- ambientes locais, cloud ou VPS;
-- bancos de dados e armazenamento;
-- repositórios de documentos e código;
-- modelos e contas de API;
-- canais de comunicação;
-- dashboards e interfaces;
-- observabilidade, logs, backup e segurança;
-- ferramentas conectadas.
-
-#### 3.3.2 Camada Agêntica
-
-Inclui:
-
-- runtime dos agentes;
-- plataforma de orquestração;
-- agentes persistentes e temporários;
-- squads;
-- automações;
-- skills;
-- memória e contexto;
-- filas, tarefas e agendas;
-- políticas de acesso e execução.
-
-### 3.4 Relação entre as camadas
-
-```mermaid
-flowchart TD
-    H[Camada Humana] -->|propósito e governança| B[Camada de Negócio]
-    B -->|estrutura e objetivos| A[Camada Agêntica]
-    I[Infraestrutura] -->|runtime, dados e ferramentas| A
-    A -->|inteligência e execução| B
-    B -->|resultados e decisões materiais| H
-```
-
----
-
-## 4. Visão geral da hierarquia
-
-```mermaid
-flowchart TD
-    HR[Humano responsável] --> CEO[CEO]
-    CEO --> AR[Área]
-    AR --> AL[Area Leader]
-
-    AL --> IL[Intelligence Leader]
-    AL --> EL[Execution Leader]
-
-    IL --> DA[Dados]
-    DA --> IC[Coleta Interna]
-    DA --> EC[Coleta Externa]
-    IL --> AN[Análise]
-    IL --> PR[Propostas]
-    IL --> DF[Definição]
-    IL --> LR[Aprendizado]
-
-    EL --> SL[Squad Leader]
-    SL --> EX[Executores]
-
-    DF -->|decisão aprovada| EL
-    EX -->|resultados| LR
-    LR -->|melhorias propostas| AL
-    AL -->|mudanças estruturais| CEO
-```
-
----
-
-## 5. Estrutura no nível da empresa
-
-### 5.1 Humano responsável
-
-É a instância de governança superior da empresa. Pode ser uma pessoa, grupo, conselho ou mecanismo de governança.
-
-Responsabilidades estruturais:
-
-- definir ou aprovar propósito e Main Goal;
-- estabelecer limites fundamentais;
-- definir o grau de autonomia da organização;
-- reservar decisões que não podem ser delegadas;
-- supervisionar o CEO;
-- aprovar mudanças de alto impacto quando exigido;
-- assumir responsabilidade legal e institucional aplicável.
-
-### 5.2 CEO
-
-O CEO é o agente de coordenação geral da empresa.
-
-Sua posição estrutural é:
-
-- abaixo do humano responsável;
-- acima dos Area Leaders;
-- responsável pela coerência da empresa como sistema;
-- responsável por transformar o Main Goal em estrutura, Áreas e prioridades;
-- responsável por decisões cross-area e por conflitos de recursos;
-- responsável por propor a evolução da própria estrutura.
-
-O CEO não deve substituir o trabalho operacional dos líderes. Ele cria contexto, prioridades e decisões organizacionais.
-
-### 5.3 Portfólio de Áreas
-
-A empresa contém uma ou mais Áreas. Cada Área deve possuir um identificador, um Area Charter e um responsável.
-
-O conjunto de Áreas representa a decomposição atual da empresa. Essa decomposição não é permanente: pode evoluir com base em estratégia, volume de trabalho, risco, dependências e aprendizado.
-
-O CEO pode, dentro de sua autoridade:
-
-- criar uma nova Área;
-- dividir uma Área;
-- combinar Áreas;
-- alterar o escopo de uma Área;
-- transformar uma iniciativa temporária em Área persistente;
-- pausar ou encerrar uma Área;
-- alterar o Area Leader;
-- ajustar recursos e prioridades.
-
-Toda mudança deve ser versionada e preservar o histórico de decisões, dados e resultados.
-
----
-
-## 6. Estrutura interna de uma Área
-
-### 6.1 Area Charter — Scope & Goals
-
-O Area Charter define a identidade operacional da Área.
-
-Deve conter:
-
-```yaml
-area:
-  id: "{{area_id}}"
-  name: "{{area_name}}"
-  parent_area_id: "{{parent_area_id_if_any}}"
-  purpose: "{{area_purpose}}"
-  scope: "{{area_scope}}"
-  out_of_scope: "{{area_out_of_scope}}"
-  goals: "{{area_goals}}"
-  success_metrics: "{{area_success_metrics}}"
-  stakeholders: "{{area_stakeholders}}"
-  dependencies: "{{area_dependencies}}"
-  resources: "{{area_resources}}"
-  constraints: "{{area_constraints}}"
-  decision_rights: "{{area_decision_rights}}"
-  risk_level: "{{area_risk_level}}"
-  time_horizon: "{{area_time_horizon}}"
-  leader: "{{area_leader}}"
-  status: "draft | active | paused | closing | archived"
-  version: "{{area_charter_version}}"
-```
-
-Os agentes devem utilizar o Area Charter para interpretar a Área. Não devem assumir seu conteúdo a partir do nome.
-
-### 6.2 Area Leader
-
-O Area Leader é o responsável pelo resultado da Área.
-
-Ele coordena duas linhas distintas:
-
-1. **Intelligence:** entende, analisa, propõe e prepara decisões.
-2. **Execution:** executa decisões aprovadas.
-
-O Area Leader:
-
-- recebe objetivos do CEO;
-- transforma objetivos em prioridades e perguntas;
-- abre ciclos de inteligência;
-- aprova ou escala decisões de acordo com sua autoridade;
-- envia decisões aprovadas para execução;
-- monitora resultados, riscos e recursos;
-- recebe aprendizados;
-- propõe alterações no Area Charter.
-
-### 6.3 Data/Docs — Area Data
-
-Cada Área possui uma base lógica de dados e documentos chamada **Area Data**.
-
-A Area Data reúne:
-
-- dados internos autorizados;
-- dados externos autorizados;
-- evidências;
-- documentos relevantes;
-- métricas;
-- histórico de análises;
-- propostas;
-- Decision Records;
-- planos e resultados de execução;
-- Learning Records;
-- logs e artefatos necessários à auditoria.
-
-A Area Data pode utilizar repositórios físicos compartilhados. A separação lógica por `company_id`, `area_id`, permissões, origem e versão deve ser preservada.
-
-### 6.4 Linha de Inteligência
-
-A linha de inteligência transforma uma necessidade de entendimento em decisão preparada.
-
-#### Intelligence Leader
-
-Orquestra o ciclo de inteligência, controla seus estados e valida os handoffs.
-
-#### Dados
-
-Transforma uma pergunta em um plano de dados, coordena as coletas e produz um Data Package confiável.
-
-#### Coleta Interna
-
-Recupera dados internos autorizados, preferencialmente em modo somente leitura, preservando origem, permissões e rastreabilidade.
-
-#### Coleta Externa
-
-Recupera dados externos públicos, licenciados ou autorizados, preservando fonte, data, confiabilidade e limitações.
-
-#### Análise
-
-Transforma o Data Package em entendimento, separando fatos, inferências, hipóteses e incertezas.
-
-#### Propostas
-
-Transforma o entendimento em alternativas de ação, com impacto, custo, prazo, risco, métricas e reversibilidade.
-
-#### Definição
-
-Avalia alternativas e produz uma recomendação, pedido de aprovação ou Decision Record, conforme os direitos de decisão.
-
-#### Aprendizado
-
-Compara decisão, execução e resultado para produzir Learning Records e melhorias propostas.
-
-### 6.5 Linha de Execução
-
-A linha de execução transforma uma decisão aprovada em trabalho realizado.
-
-#### Execution Leader
-
-Recebe o Decision Record aprovado, cria o Execution Plan, define squads, aloca recursos e consolida resultados.
-
-#### Squad
-
-Um Squad é uma estrutura de execução criada para uma finalidade específica.
-
-Pode ser:
-
-- temporário, encerrando após um resultado;
-- persistente, para um fluxo contínuo;
-- composto apenas por agentes;
-- híbrido, com humanos, agentes e automações.
-
-Todo Squad deve possuir:
-
-- `squad_id`;
-- objetivo delimitado;
-- escopo e fora de escopo;
-- Squad Leader;
-- critérios de sucesso;
-- recursos e permissões;
-- prazo ou condição de continuidade;
-- stop conditions;
-- agentes executores;
-- registro de resultados.
-
-#### Squad Leader
-
-Decompõe o Squad Brief em tarefas, cria ou coordena executores, acompanha qualidade e consolida o Squad Result.
-
-#### Executores
-
-Realizam tarefas delimitadas e verificáveis. Podem utilizar ferramentas, skills e automações autorizadas.
-
-### 6.6 Automações
-
-Automações são mecanismos determinísticos ou pré-configurados utilizados para tarefas repetíveis.
-
-Diferentemente de agentes, automações:
-
-- não recebem autoridade organizacional própria;
-- não redefinem objetivos;
-- não criam novas tarefas por iniciativa própria;
-- são acionadas por agentes ou eventos autorizados;
-- devem produzir logs e resultados rastreáveis.
-
-### 6.7 Skills
-
-Skills são capacidades reutilizáveis conectadas aos agentes.
-
-Uma skill pode conter:
-
-- conhecimento especializado;
-- processo operacional;
-- templates;
-- ferramentas;
-- regras de validação;
-- integrações.
-
-Skills ampliam capacidade, mas não ampliam automaticamente autoridade, escopo ou permissão.
-
----
-
-## 7. Fluxos estruturais
-
-### 7.1 Fluxo de direção
-
-```mermaid
-flowchart TD
-    H[Humano responsável] -->|Main Goal e guardrails| C[CEO]
-    C -->|Area Charter e prioridade| A[Area Leader]
-    A -->|perguntas e decisões| I[Inteligência]
-    A -->|decisões aprovadas| E[Execução]
-    E -->|resultados| A
-    A -->|aprendizado e escalonamentos| C
-```
-
-### 7.2 Fluxo de inteligência
-
-```mermaid
-flowchart TD
-    Q[Intelligence Request] --> D[Dados]
-    D --> A[Análise]
-    A --> P[Propostas]
-    P --> F[Definição]
-    F --> R[Decision Record]
-    R --> AP[Aprovação aplicável]
-```
-
-### 7.3 Fluxo de execução
-
-```mermaid
-flowchart TD
-    D[Decision Record aprovado] --> E[Execution Leader]
-    E --> S[Squad Leader]
-    S --> X[Executores e automações]
-    X --> SR[Squad Result]
-    SR --> ER[Execution Result consolidado]
-```
-
-### 7.4 Fluxo de aprendizado
-
-```mermaid
-flowchart TD
-    DR[Decision Record] --> L[Aprendizado]
-    ER[Execution Result] --> L
-    M[Métricas observadas] --> L
-    L --> LR[Learning Record]
-    LR --> A[Melhorias da Área]
-    LR --> C[Melhorias da empresa]
-```
-
----
-
-## 8. Direitos de decisão
-
-A autoridade deve ser explícita e contextual.
-
-### 8.1 Humano responsável
-
-Decide ou aprova, conforme a governança:
-
-- Main Goal;
-- limites fundamentais e guardrails;
-- compromissos legais ou institucionais reservados;
-- mudanças irreversíveis de alto impacto;
-- ações explicitamente não delegadas.
-
-### 8.2 CEO
-
-Decide, dentro de sua autoridade:
-
-- criação e alteração de Áreas;
-- alocação de recursos entre Áreas;
-- prioridades corporativas;
-- conflitos cross-area;
-- mudanças na estrutura organizacional;
-- decisões escaladas pelos Area Leaders.
-
-### 8.3 Area Leader
-
-Decide, dentro de sua autoridade:
-
-- prioridades da Área;
-- abertura de ciclos de inteligência;
-- decisões operacionais e alocação interna permitida;
-- início de execução quando o Decision Record estiver aprovado;
-- ajustes da Área que não alterem regras superiores.
-
-### 8.4 Agente de Definição
-
-Pode decidir somente quando o direito estiver explicitamente delegado. Nos demais casos, prepara recomendação e Decision Record para a autoridade competente.
-
-### 8.5 Linha de execução
-
-Execution Leader, Squad Leader e Executores possuem autoridade para executar o plano aprovado dentro de escopo, orçamento, ferramentas, acessos, risco e stop conditions.
-
-Eles não podem redefinir silenciosamente a decisão.
-
----
-
-## 9. Base/Docs — documentos normativos da empresa
-
-A empresa mantém uma base central de documentos normativos e de referência chamada **Base/Docs**.
-
-Essa base é compartilhada de acordo com permissões e funciona como fonte de contexto para os agentes.
-
-### 9.1 Standard / Guardrails
-
-Define regras obrigatórias que se aplicam à empresa inteira, incluindo:
-
-- limites de autonomia;
-- políticas de risco;
-- requisitos de segurança e privacidade;
-- ações que exigem aprovação;
-- comportamentos proibidos;
-- princípios de governança;
-- critérios mínimos de rastreabilidade.
-
-### 9.2 Company Description
-
-Descreve:
-
-- o que é a empresa;
-- quem ela atende;
-- quais problemas resolve;
-- produtos e serviços;
-- modelo de negócio;
-- contexto de mercado;
-- diferenciais;
-- estágio atual;
-- Main Goal e métricas principais.
-
-### 9.3 Company Structure
-
-É este documento.
-
-Descreve:
-
-- camadas da empresa;
-- hierarquia;
-- Áreas;
-- agentes e squads;
-- dados e documentos;
-- direitos de decisão;
-- fluxos de inteligência, execução e aprendizado;
-- regras de criação e evolução estrutural.
-
-### 9.4 Business Method
-
-Define como a empresa organiza o negócio e decompõe seus objetivos em Áreas, métricas, decisões e execução.
-
-Pode descrever:
-
-- método de planejamento;
-- forma de criar e revisar Áreas;
-- cadências operacionais;
-- critérios de priorização;
-- processo de experimentação;
-- gestão de métricas;
-- método de melhoria contínua.
-
-### 9.5 Agents Creation Instructions
-
-Corresponde ao documento:
-
-- [Instruções dos Agentes de uma Empresa Autoevolutiva](./instrucoes-agentes-empresa-autoevolutiva.md)
-
-Define:
-
-- instrução-base compartilhada;
-- instruções específicas de cada papel;
-- entradas, responsabilidades, saídas e limites;
-- artefatos produzidos;
-- handoffs;
-- gates de qualidade;
-- condições de escalonamento;
-- política de instanciação de novos agentes.
-
-### 9.6 Skills
-
-Catálogo de capacidades autorizadas que podem ser atribuídas aos agentes.
-
-Cada skill deve informar:
-
-- propósito;
-- agentes elegíveis;
-- ferramentas e acessos necessários;
-- inputs e outputs;
-- riscos;
-- limites;
-- validações;
+- decision rights;
+- budget;
+- configurações;
+- data sources;
+- ferramentas e skills;
 - versão.
 
-### 9.7 Additional Instructions
+#### Area Database
 
-Contém instruções complementares aprovadas durante a operação.
-
-Elas devem:
-
-- possuir escopo explícito;
-- identificar empresa, Área, agente ou processo aplicável;
-- registrar autoria e aprovação;
-- possuir data, versão e motivo;
-- respeitar documentos de maior precedência;
-- permitir revogação ou substituição controlada.
-
-### 9.8 CEO Repo
-
-É o repositório de atualização e memória operacional do CEO.
-
-Pode conter:
-
-- Company Direction Records;
-- decisões estratégicas;
-- histórico de Áreas;
-- hipóteses corporativas;
-- prioridades atuais;
-- conflitos e dependências cross-area;
-- propostas de alteração estrutural;
-- Learning Records com alcance organizacional;
-- instruções adicionais aprovadas;
-- referências para versões dos documentos normativos.
-
-O CEO Repo não substitui os documentos normativos. Ele registra evolução, contexto e decisões que podem originar novas versões.
-
----
-
-## 10. Estrutura informacional e repositórios
-
-### 10.1 Base/Docs
-
-Armazena documentos normativos e referências corporativas.
-
-### 10.2 Area Data
-
-Armazena dados, evidências, artefatos e registros relacionados a uma Área.
-
-### 10.3 CEO Repo
-
-Armazena decisões, contexto e aprendizado no nível da empresa.
-
-### 10.4 Execution Logs
-
-Armazenam tarefas, ações, parâmetros, ferramentas, alterações, validações, incidentes e resultados.
-
-### 10.5 Agent Registry
-
-Mantém o inventário de agentes e automações:
-
-- identidade;
-- papel lógico;
-- empresa, Área e squad;
-- responsável;
-- instrução e versão;
-- skills;
-- ferramentas;
-- permissões;
-- estado;
-- data de criação;
-- condição de encerramento.
-
-### 10.6 Artifact Registry
-
-Mantém referências para os artefatos produzidos:
-
+- dados internos e externos;
+- Evidence Records;
 - Data Packages;
 - Analytical Briefs;
 - Proposal Sets;
-- Decision Records;
+- Definition e Decision Records;
 - Execution Plans;
-- Squad Results;
 - Execution Results;
+- métricas;
+- hipóteses e seu grau de confiança;
+- incidentes e bloqueios.
+
+#### Learning Log
+
 - Learning Records;
-- Area Charters;
-- Company Direction Records.
+- mudanças sugeridas;
+- aprendizados aprovados;
+- limites de validade;
+- versões afetadas.
 
-### 10.7 Identificadores mínimos
+#### Files
 
-Todo registro operacional relevante deve possuir, quando aplicável:
+- arquivos de suporte;
+- contratos;
+- imagens;
+- datasets;
+- documentos;
+- anexos e fontes autorizadas.
 
-```yaml
-identity:
-  company_id: "{{company_id}}"
-  area_id: "{{area_id}}"
-  squad_id: "{{squad_id}}"
-  agent_id: "{{agent_id}}"
-  cycle_id: "{{cycle_id}}"
-  task_id: "{{task_id}}"
-  decision_id: "{{decision_id}}"
-  artifact_id: "{{artifact_id}}"
-  instruction_version: "{{instruction_version}}"
-  generated_at: "{{generated_at}}"
-```
+O Area Leader lê e atualiza Area Settings, decisões e prioridades. Data coordena o acesso e a organização dos dados. Learning registra aprendizados. Os demais agentes registram seus artefatos no Area Database.
 
----
+## 5. Goals & Guardrails
 
-## 11. Estrutura técnica de implementação
+### 5.1 Responsabilidade humana
 
-A estrutura organizacional não depende de uma tecnologia específica. Uma implementação pode utilizar diferentes componentes para os papéis abaixo.
+O humano responsável define ou aprova:
 
-### 11.1 Interface humana
+- Main Goal;
+- limites de atuação;
+- riscos aceitáveis;
+- decisões reservadas;
+- budget inicial;
+- mudanças estratégicas e estruturais materiais.
 
-Permite que humanos:
+### 5.2 Responsabilidade do CEO
 
-- definam objetivos;
-- conversem com o CEO e outros agentes autorizados;
-- aprovem decisões;
-- acompanhem métricas;
-- inspecionem tarefas, logs e resultados;
-- alterem estrutura e instruções.
+O CEO pode criar subgoals quando necessário, desde que:
 
-Pode ser implementada por dashboard, chat, voz, terminal, canal de mensagens ou combinação desses meios.
+- sejam rastreáveis ao Main Goal;
+- respeitem guardrails;
+- possuam métricas ou critérios de conclusão;
+- não ampliem silenciosamente a autoridade da Company;
+- sejam registrados em Company Data.
 
-### 11.2 Runtime agêntico
+### 5.3 Responsabilidade da Área
 
-Executa agentes, mantém contexto, aciona modelos, controla ferramentas e registra atividades.
+Cada Área recebe Goals próprios ligados à Goal Tree. Nenhuma task pode existir sem relação identificável com um Goal ou com manutenção necessária da estrutura autorizada.
 
-### 11.3 Orquestrador
+## 6. CEO
 
-Gerencia:
+O CEO é responsável por conduzir a Company em direção aos Goals dentro dos Guardrails.
 
-- agentes persistentes;
-- agentes temporários;
-- hierarquia;
-- tarefas;
-- squads;
-- estados;
-- agendas;
-- dependências;
-- handoffs;
-- permissões;
-- logs.
+Responsabilidades mínimas:
 
-### 11.4 Modelos e contas de API
+- manter Goals, Company Data e estrutura coerentes;
+- utilizar Business Method para propor e revisar Áreas;
+- criar Area Leaders;
+- criar ou autorizar agentes conforme Agents Creation Instructions;
+- conectar skills e ferramentas autorizadas;
+- distribuir budget e prioridades;
+- resolver conflitos cross-area;
+- escalar decisões reservadas ao humano;
+- revisar aprendizados com impacto corporativo;
+- manter a Company no MVA ou em nível superior aprovado.
 
-Fornecem capacidade de inferência. Modelos diferentes podem ser atribuídos de acordo com custo, latência, qualidade, privacidade e complexidade.
+O CEO não executa rotineiramente o trabalho das Áreas e não microgerencia tasks de squads.
 
-O modelo utilizado não altera automaticamente o papel ou autoridade do agente.
+## 7. Área
 
-### 11.5 Tools e Skills
+Uma Área é uma célula operacional autoevolutiva. Sua estrutura é a mesma para scopes amplos ou específicos.
 
-Fornecem acesso a sistemas e capacidades. Devem ser atribuídos pelo princípio do menor privilégio.
+Cada Área possui:
 
-### 11.6 Canais
+- Area Settings;
+- Area Leader;
+- Area Data;
+- time de inteligência;
+- time de execução;
+- Learning Agent;
+- humano no circuito por meio dos approvals aplicáveis.
 
-Permitem interação com humanos ou sistemas. O uso de um canal não concede autoridade para representar a empresa externamente.
+### 7.1 Area Leader
 
-### 11.7 Repositórios
+O Area Leader é dono do resultado da Área. Ele:
 
-Armazenam código, documentos, dados, decisões, memória, versões e artefatos.
+- mantém Scope & Goals;
+- define prioridades e perguntas;
+- orquestra o Area Loop;
+- coordena inteligência, definição, execução e aprendizado;
+- aprova decisões dentro de seus decision rights;
+- escala o restante ao CEO ou humano;
+- acompanha métricas, budget, riscos e dependências;
+- propõe evolução da Área.
 
-### 11.8 Observabilidade
+Não existe Intelligence Leader obrigatório no MVA. Uma Área pode criar coordenação adicional posteriormente quando volume ou complexidade justificarem.
 
-Deve permitir:
+## 8. Time de inteligência
 
-- visualizar agentes ativos;
-- consultar tarefas e estados;
-- rastrear decisões e ações;
-- acompanhar custos e uso de recursos;
-- detectar falhas e incidentes;
-- reproduzir o contexto de uma execução;
-- realizar auditoria e rollback quando aplicável.
+O time de inteligência transforma contexto e dados em uma decisão rastreável.
 
----
+### 8.1 Data
 
-## 12. Composição de papéis em estruturas pequenas
+- identifica necessidades de informação;
+- acessa e organiza Area Data;
+- coordena Internal e External Teams;
+- normaliza, deduplica e versiona dados;
+- registra fontes, qualidade, atualidade e limitações;
+- produz Data Package.
 
-Esta estrutura define papéis lógicos. Uma Área não precisa começar com treze processos independentes.
+### 8.2 Internal Team
 
-### 12.1 Composição permitida
+Unidade on-demand de coleta em fontes internas autorizadas, como documentos, bancos, sistemas, logs, comunicações e operações.
 
-Em Áreas pequenas ou de baixo risco, uma mesma instância pode exercer:
+### 8.3 External Team
 
-- Intelligence Leader e Area Leader;
-- Dados e coordenação das coletas;
-- Análise e Propostas, desde que os artefatos permaneçam separados;
-- Execution Leader e Squad Leader;
-- Squad Leader e Executor.
-
-### 12.2 Composição com restrição
-
-Uma mesma instância não deve aprovar materialmente o próprio trabalho quando:
-
-- a decisão for irreversível;
-- existir impacto legal, financeiro, reputacional, de segurança ou privacidade relevante;
-- houver exigência de segregação;
-- o risco exceder o limite da Área;
-- a governança exigir revisão humana ou por outro agente.
+Unidade on-demand de coleta em fontes externas autorizadas, como web, APIs, pesquisas, benchmarks, legislação e mercado.
 
-### 12.3 Expansão progressiva
+### 8.4 Analysis
 
-Papéis devem ser separados em agentes próprios quando:
+- estrutura premissas;
+- avalia evidências;
+- identifica padrões, causas prováveis, riscos e oportunidades;
+- diferencia fatos, inferências e hipóteses;
+- produz Analytical Brief.
 
-- volume ou frequência aumentar;
-- o contexto necessário ficar grande demais;
-- a especialização trouxer ganho relevante;
-- houver gargalo de coordenação;
-- aumentarem risco ou necessidade de segregação;
-- qualidade e auditabilidade exigirem revisão independente.
+### 8.5 Proposals
 
----
+- transforma análise em alternativas;
+- inclui cenário de não ação quando aplicável;
+- propõe experimentos e ações;
+- estima impacto, esforço, custo, prazo, risco e reversibilidade;
+- produz Proposal Set.
 
-## 13. Criação de uma nova Área
-
-Uma nova Área deve ser criada por meio do seguinte fluxo:
+### 8.6 Definition
 
-1. identificar uma responsabilidade ou resultado que precisa de ownership;
-2. justificar por que não deve permanecer em uma Área existente;
-3. criar um Area Charter;
-4. definir Area Leader;
-5. definir Scope & Goals;
-6. configurar Area Data e permissões;
-7. definir direitos de decisão e nível de risco;
-8. atribuir Intelligence Leader e Execution Leader, ainda que acumulados;
-9. instanciar os agentes necessários segundo Agents Creation Instructions;
-10. conectar skills, ferramentas e repositórios;
-11. definir métricas, cadência de revisão e condição de encerramento;
-12. ativar e registrar a versão inicial.
-
-### 13.1 Critérios para criar uma Área
-
-Uma nova Área é adequada quando existe pelo menos uma destas condições:
-
-- objetivo persistente com responsável próprio;
-- contexto, dados ou ferramentas substancialmente diferentes;
-- direitos de decisão específicos;
-- risco que exige isolamento;
-- volume de trabalho que justifica liderança própria;
-- necessidade de métricas e ciclo de aprendizado próprios.
-
-### 13.2 Quando utilizar um Squad em vez de uma Área
-
-Utilize um Squad quando:
-
-- o objetivo é uma entrega delimitada;
-- o escopo é temporário;
-- a responsabilidade permanece pertencendo a uma Área existente;
-- não é necessário um ciclo completo de governança e inteligência independente.
-
----
-
-## 14. Evolução e autoevolução estrutural
-
-A estrutura pode evoluir, mas mudanças devem seguir um processo controlado.
-
-### 14.1 Gatilhos de evolução
-
-- métricas persistentemente abaixo ou acima do esperado;
-- gargalos recorrentes;
-- sobreposição entre Áreas;
-- dependências excessivas;
-- novos produtos, mercados ou riscos;
-- mudança do Main Goal;
-- aprendizado com aplicação organizacional;
-- falhas de decisão ou execução;
-- aumento de volume ou complexidade.
-
-### 14.2 Tipos de mudança
-
-- alterar um Area Charter;
-- separar ou combinar papéis;
-- criar ou encerrar agentes;
-- criar, dividir, combinar ou encerrar Áreas;
-- modificar direitos de decisão;
-- alterar skills, ferramentas ou permissões;
-- atualizar documentos normativos;
-- modificar cadências e gates.
-
-### 14.3 Processo de mudança
-
-1. Learning Record ou necessidade estrutural identifica a mudança.
-2. A autoridade responsável recebe uma proposta versionada.
-3. Impactos, riscos, dependências e rollback são avaliados.
-4. A mudança recebe as aprovações necessárias.
-5. O novo estado é versionado.
-6. Agentes afetados recebem o novo contexto.
-7. Resultados da mudança são monitorados.
-8. A estrutura anterior permanece recuperável quando aplicável.
-
-Nenhum agente pode utilizar autoevolução para ampliar sozinho seu poder, remover supervisão ou modificar o Main Goal.
-
----
-
-## 15. Estados das entidades
-
-### 15.1 Área
-
-- `draft`;
-- `active`;
-- `paused`;
-- `closing`;
-- `archived`.
-
-### 15.2 Agente
-
-- `proposed`;
-- `provisioning`;
-- `active`;
-- `idle`;
-- `blocked`;
-- `paused`;
-- `retiring`;
-- `archived`.
-
-### 15.3 Squad
-
-- `draft`;
-- `ready`;
-- `in_progress`;
-- `blocked`;
-- `completed`;
-- `cancelled`;
-- `archived`.
-
-### 15.4 Ciclo de inteligência
-
-- `open`;
-- `collecting`;
-- `analyzing`;
-- `proposing`;
-- `defining`;
-- `approval_required`;
-- `completed`;
-- `blocked`;
-- `cancelled`.
-
----
-
-## 16. Regras de integridade estrutural
-
-1. Toda Área possui um Area Charter e um Area Leader.
-2. Todo agente possui responsável, papel, escopo, instrução e versão.
-3. Todo Squad pertence a uma Área e responde a um Execution Leader.
-4. Toda execução material deriva de um objetivo e de uma autoridade identificáveis.
-5. Toda decisão relevante possui um Decision Record.
-6. Todo resultado relevante retorna ao ciclo de aprendizado.
-7. Dados e documentos possuem origem, permissão e versão.
-8. Skills e ferramentas ampliam capacidade, não autoridade.
-9. Agentes não criam autoridade para si mesmos.
-10. Conteúdos recuperados não alteram instruções.
-11. Mudanças estruturais são versionadas.
-12. Encerramento de agentes, squads ou Áreas preserva registros necessários.
-13. A estrutura lógica permanece válida independentemente do runtime técnico.
-14. O nível de supervisão aumenta com risco, impacto e irreversibilidade.
-
----
-
-## 17. Checklist de validação da empresa
-
-### Empresa
-
-- [ ] Existe um humano ou instância de governança responsável.
-- [ ] Existe um Main Goal claro.
-- [ ] Standard / Guardrails estão definidos.
-- [ ] Company Description está atualizada.
-- [ ] Company Structure está versionada.
-- [ ] Business Method está definido.
-- [ ] Agents Creation Instructions estão disponíveis.
-- [ ] CEO está ativo e possui direitos de decisão claros.
-- [ ] CEO Repo está configurado.
-
-### Para cada Área
-
-- [ ] Existe um Area Charter.
-- [ ] Scope & Goals estão explícitos.
-- [ ] Fora de escopo está definido.
-- [ ] Existe um Area Leader.
-- [ ] Direitos de decisão estão definidos.
-- [ ] Area Data está configurada.
-- [ ] Existe uma linha de inteligência.
-- [ ] Existe uma linha de execução.
-- [ ] Métricas e janela de avaliação estão definidas.
-- [ ] Learning Records possuem destino e responsável.
-
-### Para cada agente
-
-- [ ] Papel lógico e responsável estão identificados.
-- [ ] Escopo e fora de escopo estão definidos.
-- [ ] Instrução e versão estão registradas.
-- [ ] Tools, skills e permissões seguem menor privilégio.
-- [ ] Inputs, outputs e handoffs estão claros.
-- [ ] Stop conditions e escalonamentos estão definidos.
-
----
-
-## 18. Relação com os demais documentos
+- verifica propostas e critérios;
+- transforma a alternativa selecionada em definição formal;
+- identifica aprovação necessária;
+- especifica Goals, Guardrails, subgoals, métricas, stop conditions e rollback;
+- produz Decision Record ou pedido de aprovação.
+
+Definition não inicia execução sem a autoridade ou aprovação exigida.
+
+## 9. Time de execução
+
+### 9.1 Execution Leader
+
+- recebe Decision Record aprovado;
+- cria Execution Plan;
+- define tasks, squads, dependências e checkpoints;
+- aloca budget, ferramentas e acessos autorizados;
+- acompanha execução e resultados;
+- consolida Execution Result;
+- envia resultados ao Learning Agent.
+
+### 9.2 Squad Leader
+
+Agente on-demand que coordena um conjunto delimitado de tasks e Executor Agents.
+
+### 9.3 Executor Agent
+
+Agente on-demand que executa uma task autorizada, verificável e ligada ao Execution Plan.
+
+Squads e executores são encerrados ou pausados quando sua finalidade termina, preservando logs e artefatos.
+
+## 10. Learning
+
+Learning é independente do time de execução e reporta ao Area Leader.
+
+Ele:
+
+- recebe Decision Record, Execution Plan e Execution Results;
+- compara previsto versus realizado;
+- avalia métricas e evidências;
+- identifica o que funcionou, falhou e em quais condições;
+- atualiza confiança de hipóteses;
+- registra Learning Record;
+- sugere mudanças de coleta, análise, propostas, definição e execução;
+- escala aprendizados cross-area ao CEO.
+
+Learning registra e propõe. Mudanças materiais seguem guardrails e approvals.
+
+## 11. Area Loop
 
 ```mermaid
-flowchart TD
-    G[Standard / Guardrails] --> CS[Company Structure]
-    CD[Company Description] --> CS
-    BM[Business Method] --> CS
-    CS --> AC[Agents Creation Instructions]
-    SK[Skills] --> AC
-    AI[Additional Instructions] --> AC
-    CS --> CR[CEO Repo]
-    AC --> AR[Agent Registry]
-    CS --> AA[Area Charters]
+flowchart LR
+    D["Data"] --> A["Analysis"]
+    A --> P["Proposals"]
+    P --> DF["Definition"]
+    DF --> AP["Approval gate"]
+    AP --> E["Execution"]
+    E --> L["Learning"]
+    L --> AD["Area Data"]
+    AD --> D
 ```
 
-### Precedência resumida
+### 11.1 Etapas e artefatos
 
-1. Standard / Guardrails;
-2. instruções aprovadas do humano responsável;
-3. Company Description e Main Goal;
-4. Company Structure;
-5. Business Method;
-6. Area Charter;
-7. Agents Creation Instructions;
-8. Decision Records;
-9. tarefas e planos aprovados;
-10. Additional Instructions;
-11. Learning Records e heurísticas.
+| Etapa | Função | Artefato mínimo |
+|---|---|---|
+| Data | captar e estruturar dados internos e externos | Data Package |
+| Analysis | estruturar premissas e avaliar evidências | Analytical Brief |
+| Proposals | gerar alternativas e experimentos | Proposal Set |
+| Definition | formalizar escolha, Goals, Guardrails e subgoals | Decision Record |
+| Execution | criar tasks e squads e executar | Execution Plan e Execution Result |
+| Learning | estruturar aprendizados | Learning Record |
 
-Em caso de conflito, a autoridade responsável deve resolver e registrar a decisão. Nenhum agente deve escolher silenciosamente a instrução mais conveniente.
+### 11.2 Approval gate
 
----
+- Area Leader aprova decisões dentro de seus decision rights.
+- CEO aprova decisões cross-area ou acima da autoridade da Área.
+- Humano aprova decisões reservadas por Goals & Guardrails.
 
-## 19. Resumo executivo da estrutura
+### 11.3 Retornos obrigatórios
 
-- O humano responsável define propósito, limites e governança.
-- O CEO transforma o Main Goal em estrutura, Áreas e prioridades.
-- Cada Área possui Scope & Goals, Data/Docs, liderança, inteligência, execução e aprendizado.
-- O Area Leader responde pelo resultado da Área.
-- A linha de inteligência transforma dados em decisões preparadas.
-- A linha de execução transforma decisões aprovadas em resultados.
-- Squads organizam a execução de finalidades específicas.
-- Executores realizam tarefas delimitadas.
-- O aprendizado compara intenção e resultado.
-- Mudanças estruturais são propostas, aprovadas, versionadas e monitoradas.
-- A estrutura é a mesma para empresas diferentes e para Áreas com qualquer nível de granularidade.
+- Internal/External Teams devolvem Evidence Records a Data.
+- Executor Agents devolvem resultados ao Squad Leader.
+- Squad Leader devolve Squad Result ao Execution Leader.
+- Execution Leader devolve resultado consolidado ao Learning.
+- Learning escreve em Area Data.
+- O ciclo seguinte utiliza Area Data atualizado.
 
----
+## 12. Instruções e skills dos agentes
 
-**Fim do documento.**
+As instruções runtime devem ser enxutas. Elas não copiam integralmente todos os documentos.
+
+Cada agente recebe:
+
+- identidade e papel;
+- reports-to;
+- Company e Area aplicáveis;
+- Goals e Scope;
+- referências versionadas aos documentos normativos;
+- local de Company Data e Area Data;
+- inputs e outputs;
+- decision rights;
+- tools, skills e permissões;
+- budget e heartbeat;
+- stop conditions e approvals.
+
+O padrão de geração está em `AGENTS_CREATION_INSTRUCTIONS.md`.
+
+## 13. Persistência dos agentes no MVA
+
+### Persistentes
+
+- CEO;
+- Area Leader;
+- Data;
+- Analysis;
+- Proposals;
+- Definition;
+- Execution Leader;
+- Learning.
+
+### On-demand
+
+- Internal Team agents;
+- External Team agents;
+- Squad Leaders;
+- Executor Agents;
+- especialistas adicionais.
+
+A Company pode consolidar papéis no mesmo runtime somente quando explicitamente aprovado e quando preservar artefatos, limites e segregação necessária.
+
+## 14. Mapeamento mínimo para Paperclip
+
+| Estrutura | Paperclip |
+|---|---|
+| Company | Company |
+| Main Goal | Goal raiz |
+| Subgoal | Goal descendente |
+| Área | Project e Goal da Área |
+| Area Settings | Documento do Project/Area Data |
+| Agente | Agent no org chart |
+| Reporting line | `reports_to` |
+| Ciclo de inteligência | Issue com sub-issues e work products |
+| Decisão | Decision Record e approval aplicável |
+| Execução | Issue/sub-issues atribuídas a squad e executores |
+| Aprendizado | Learning Record e task de melhoria |
+| Company/Area Data | Documents, workspace e work products com acesso controlado |
+| Rotina | Routine/heartbeat quando necessário |
+| Budget | Política de budget da Company, agentes, goals ou projects |
+
+O mapeamento deve usar os recursos disponíveis na versão instalada do Paperclip. O CEO não inventa entidades inexistentes; registra adaptações no Implementation Plan.
+
+## 15. Estados
+
+### Company
+
+- `BOOTSTRAPPING`
+- `OPERATIONAL`
+- `DEGRADED`
+- `PAUSED`
+- `ARCHIVED`
+
+### Área
+
+- `DRAFT`
+- `READY`
+- `ACTIVE`
+- `BLOCKED`
+- `PAUSED`
+- `LEARNING_PENDING`
+- `ARCHIVED`
+
+### Trabalho
+
+- `DRAFT`
+- `READY`
+- `IN_PROGRESS`
+- `WAITING_DEPENDENCY`
+- `APPROVAL_REQUIRED`
+- `BLOCKED`
+- `COMPLETED`
+- `PARTIAL`
+- `FAILED`
+- `CANCELLED`
+
+## 16. Critérios de MVA implementado
+
+A Company alcança MVA quando:
+
+- Goals & Guardrails estão registrados e acessíveis;
+- CEO e humano responsável estão identificados;
+- Company Data existe e contém Source Manifest;
+- existe pelo menos uma Área necessária ao Main Goal;
+- cada Área possui Area Settings e Area Data;
+- responsabilidades persistentes do Area Loop estão atribuídas;
+- inteligência e execução estão separadas;
+- reporting lines e decision rights estão definidos;
+- existe approval gate antes de execução material;
+- o resultado da execução chega a Learning;
+- Learning registra no Area Data;
+- budgets, permissões e heartbeats estão definidos;
+- uma task pode ser rastreada até um Goal;
+- o Company Start Report não contém conflito crítico aberto.
+
+## 17. Evolução posterior
+
+Depois do MVA, a Company pode melhorar mediante evidência:
+
+- criar agentes coletores persistentes;
+- dividir ou combinar Áreas;
+- especializar Analysis, Proposals ou Execution;
+- instalar plugins;
+- adicionar integrações e automações;
+- elevar frequência de heartbeats;
+- ampliar autonomia dentro de guardrails;
+- criar novos loops e métricas;
+- importar aprendizados cross-area.
+
+Toda evolução segue o ciclo de aprendizado e as aprovações aplicáveis.
+
