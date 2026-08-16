@@ -1,6 +1,6 @@
 # Company Structure — Minimum Viable Autonomy
 
-**Versão:** 2.3  
+**Versão:** 2.4  
 **Finalidade:** definir a estrutura organizacional mínima que permite orientação a objetivos, operação agêntica e autoaprendizado progressivo.
 
 ## 1. Minimum Viable Autonomy
@@ -97,6 +97,7 @@ Company Data existe somente dentro da Company instanciada. Deve conter ou refere
 - Goals & Guardrails;
 - cópia ativa de Standard Guardrails;
 - CEO Additional Instructions;
+- CEO Config Record;
 - Company Config;
 - Skill Registry;
 - Source Manifest com repo, branch, commit e versão;

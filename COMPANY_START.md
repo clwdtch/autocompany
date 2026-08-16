@@ -1,6 +1,6 @@
 # Company Start
 
-**Versão:** 1.3  
+**Versão:** 1.4  
 **Executor:** CEO da Company  
 **Finalidade:** planejar, implementar, validar e ativar o Minimum Viable Autonomy no Paperclip a partir deste padrão.
 
@@ -85,6 +85,12 @@ bootstrap_input:
   initial_budget: "{{budget_or_conservative_default}}"
   known_constraints: "{{constraints_or_none}}"
   additional_guardrails: "{{guardrails_or_none}}"
+  ceo_runtime_preferences:
+    adapter_type: "{{preferred_or_discover}}"
+    model: "{{preferred_or_discover}}"
+    workspace: "{{path_or_not_applicable}}"
+    timer_heartbeat: "{{disabled_or_requested}}"
+    interval_sec: "{{null_or_requested_interval}}"
   approved_source:
     repository: "{{repository}}"
     branch_or_tag: "{{branch_or_tag}}"
@@ -100,7 +106,131 @@ Se success metrics, budget ou outras configurações estiverem ausentes:
 - inclua-os no Company Implementation Plan;
 - exija aprovação antes de aplicar.
 
-## 6. Permissões mínimas do CEO
+## 6. CEO Bootstrap Config
+
+Antes de alterar o CEO genérico, produza um `CEO Bootstrap Config` como estado desejado. Este schema é um contrato portável, não um payload bruto da API. Mapeie seus campos para a versão e o adapter instalados e registre toda adaptação.
+
+```yaml
+ceo_bootstrap_config:
+  config_version: "1.0"
+  identity:
+    role: "ceo"
+    reports_to: "{{human_authority}}"
+    company_id: "{{company_id}}"
+  sources:
+    company_start: "{{company_start_at_fixed_commit}}"
+    agents_instructions: "{{agents_instructions_at_fixed_commit}}"
+    company_data: "{{company_data_reference}}"
+    source_commit: "{{commit_sha}}"
+  adapter:
+    type: "DISCOVER | {{approved_adapter_type}}"
+    model: "DISCOVER | {{approved_model}}"
+    workspace: "DISCOVER | {{absolute_path_or_not_applicable}}"
+    instructions_bundle_file: "AGENTS.md"
+    run_timeout_sec: "{{approved_adapter_default}}"
+  runtime:
+    bootstrap:
+      timer_heartbeat_enabled: false
+      wake_on_demand: true
+      max_concurrent_runs: 1
+    operational:
+      timer_heartbeat_enabled: false
+      wake_on_demand: true
+      interval_sec: null
+      max_concurrent_runs: 1
+  budget:
+    company_monthly_cents: "{{approved_company_budget}}"
+    ceo_monthly_cents: "{{approved_or_conservative_proposal}}"
+    soft_alert_percent: 80
+    hard_stop_percent: 100
+  permissions:
+    required_capabilities:
+      - read_company_state
+      - read_and_manage_goals
+      - read_and_manage_projects
+      - propose_or_create_agents
+      - define_reporting_lines
+      - create_tasks_and_documents
+      - configure_budgets_and_heartbeats
+      - request_and_read_approvals
+      - read_activity_and_work_products
+    default_denied:
+      - weaken_standard_guardrails
+      - approve_own_reserved_decisions
+      - access_unapproved_secrets
+      - perform_unapproved_external_actions
+  approvals:
+    company_implementation_plan: "HUMAN_REQUIRED"
+    persistent_agent_creation: "POLICY_REQUIRED"
+    structural_change: "POLICY_REQUIRED"
+    material_budget_change: "HUMAN_REQUIRED"
+    external_representation: "HUMAN_REQUIRED"
+  execution_control:
+    max_retries_same_failure: 2
+    stop_after_repeated_no_progress: true
+    deduplicate_by_task_and_bootstrap_id: true
+    record_all_mutations: true
+  data_access:
+    company_data: "read_write"
+    area_data: "read_by_default_write_when_authorized"
+    secrets: "references_only"
+  failure_state: "BLOCKED"
+```
+
+### 6.1 Defaults seguros
+
+- Durante `PLAN`, mantenha timer heartbeat desativado e use somente wake-on-demand da task de bootstrap.
+- Durante `APPLY`, preserve `max_concurrent_runs: 1` e não inicie um segundo bootstrap concorrente.
+- Ao entrar em `OPERATIONAL`, mantenha timer heartbeat desativado por padrão.
+- Ative timer heartbeat somente quando existir dever recorrente explícito, budget aprovado e critério de não trabalho.
+- Se timer for aprovado, use apenas um mecanismo de agenda: intervalo ou cron, nunca ambos.
+- Um heartbeat sem task, evento, rotina ou condição acionável deve terminar sem criar trabalho artificial.
+- Budget do CEO nunca pode exceder o budget da Company; ausência de valor exige proposta conservadora e aprovação.
+- Referencie secrets pelo mecanismo seguro da plataforma; não grave valores secretos em Company Data, instruções ou reports.
+- Não configure fallback de modelo ou adapter que a versão instalada não suporte explicitamente.
+
+### 6.2 Descoberta e mapeamento
+
+Antes de propor o config:
+
+1. leia a configuração atual do CEO;
+2. descubra os schemas de adapter e runtime expostos pela instância;
+3. compare configurações válidas de agentes existentes da mesma Company;
+4. valide adapter, model, workspace, instructions bundle e variáveis necessárias;
+5. mapeie os campos portáveis para os nomes suportados;
+6. marque cada campo como `KEEP`, `UPDATE`, `APPROVAL_REQUIRED`, `UNSUPPORTED` ou `UNKNOWN`;
+7. inclua o diff no Company Implementation Plan.
+
+Não presuma que exemplos de outra versão ou adapter são válidos nesta instância.
+
+### 6.3 Aplicação em duas etapas
+
+#### Bootstrap profile
+
+Use enquanto a Company estiver em `BOOTSTRAPPING`:
+
+- CEO ativo e acionável pela task;
+- wake-on-demand habilitado;
+- timer heartbeat desativado;
+- uma execução concorrente no máximo;
+- budget e stop conditions conservadores;
+- nenhuma execução externa operacional.
+
+#### Operational profile
+
+Aplique somente depois do Company Implementation Plan aprovado e do MVA validado:
+
+- instrução runtime enxuta e versionada;
+- adapter, model e workspace validados;
+- permissions e decision rights aprovados;
+- budget com alertas e hard stop;
+- wake-on-demand testado;
+- timer opcional e justificado;
+- logs, custos e activity rastreáveis.
+
+Se o CEO não puder alterar sua própria configuração, produza a ação exata para Board/administrador, aguarde a alteração e releia o estado antes de continuar.
+
+## 7. Permissões mínimas do CEO
 
 Antes de implementar, verifique se possui acesso suficiente para, conforme a versão instalada do Paperclip:
 
@@ -117,7 +247,7 @@ Antes de implementar, verifique se possui acesso suficiente para, conforme a ver
 
 Não contorne ausência de permissão. Registre exatamente qual capacidade está faltando e solicite ação à autoridade responsável.
 
-## 7. Modos de execução
+## 8. Modos de execução
 
 ### `PLAN`
 
@@ -146,7 +276,7 @@ Não contorne ausência de permissão. Registre exatamente qual capacidade está
 
 Se o modo não estiver explícito, assuma `PLAN`.
 
-## 8. Regras não negociáveis do bootstrap
+## 9. Regras não negociáveis do bootstrap
 
 - Fixe o source commit antes de ler o padrão.
 - Não use automaticamente uma versão posterior de `main`.
@@ -162,7 +292,7 @@ Se o modo não estiver explícito, assuma `PLAN`.
 - Toda adaptação à versão instalada do Paperclip deve ser registrada.
 - Toda falha deve resultar em estado conhecido e relatório.
 
-## 9. Fase 0 — Inicialização
+## 10. Fase 0 — Inicialização
 
 1. Confirme sua identidade, Company, reports-to e task de bootstrap.
 2. Registre `bootstrap_id`, timestamp e modo.
@@ -186,7 +316,7 @@ bootstrap_record:
   current_state_summary: "{{summary}}"
 ```
 
-## 10. Fase 1 — Preflight
+## 11. Fase 1 — Preflight
 
 Valide:
 
@@ -195,6 +325,7 @@ Valide:
 - permissões do CEO;
 - existência do humano responsável;
 - versão/capacidades relevantes do Paperclip;
+- configuração atual do CEO, schemas de adapter/runtime e compatibilidade do config proposto;
 - budget inicial;
 - estado atual e possíveis conflitos;
 - ausência de execução concorrente de outro bootstrap.
@@ -212,11 +343,11 @@ Classifique cada item desejado:
 
 Qualquer `CONFLICT` crítico ou `UNSUPPORTED` necessário ao MVA bloqueia `APPLY` até resolução ou adaptação aprovada.
 
-## 11. Fase 2 — Company Implementation Plan
+## 12. Fase 2 — Company Implementation Plan
 
 Em modo `PLAN`, produza um plano contendo:
 
-### 11.1 Fundação
+### 12.1 Fundação
 
 - Company identity;
 - Main Goal e Goal Tree inicial;
@@ -224,9 +355,10 @@ Em modo `PLAN`, produza um plano contendo:
 - Company Data;
 - Source Manifest;
 - configuração e instrução operacional do CEO;
+- CEO Bootstrap Config, diff e mapeamento para a instância;
 - budgets, permissions e approvals.
 
-### 11.2 Áreas
+### 12.2 Áreas
 
 Aplique `EXPANSION_RULES.md` e consulte `AREA_LIBRARY.md`.
 
@@ -258,7 +390,7 @@ Para cada Área:
 
 O plano deve demonstrar por que as candidatas representam o menor conjunto capaz de sustentar o Main Goal e o MVA no momento atual.
 
-### 11.3 Organograma
+### 12.3 Organograma
 
 Planeje:
 
@@ -276,7 +408,7 @@ Humano/Board
 
 Internal/External Team agents reportam a Data quando criados. Squad Leaders reportam ao Execution Leader. Executor Agents reportam ao Squad Leader.
 
-### 11.4 Agentes
+### 12.4 Agentes
 
 Para cada agente persistente, inclua:
 
@@ -292,7 +424,7 @@ Para cada agente persistente, inclua:
 - heartbeat;
 - outputs e stop conditions.
 
-### 11.5 Area Loop
+### 12.5 Area Loop
 
 Defina como cada Área realizará:
 
@@ -300,7 +432,7 @@ Defina como cada Área realizará:
 Data → Analysis → Proposals → Definition → Approval → Execution → Learning → Area Data → Data
 ```
 
-### 11.6 Diff e riscos
+### 12.6 Diff e riscos
 
 Inclua:
 
@@ -314,13 +446,13 @@ Inclua:
 - custos iniciais e recorrentes;
 - approvals necessárias.
 
-### 11.7 Aprovação
+### 12.7 Aprovação
 
 Publique o Company Implementation Plan como work product da task de bootstrap e solicite aprovação ao humano responsável.
 
 Não prossiga para `APPLY` até que a aprovação esteja registrada e vinculada à versão exata do plano.
 
-## 12. Fase 3 — Implementar a fundação
+## 13. Fase 3 — Implementar a fundação
 
 Após aprovação:
 
@@ -328,7 +460,7 @@ Após aprovação:
 2. Reconfira source commit e estado atual.
 3. Aplique somente itens autorizados.
 
-### 12.1 Goals & Guardrails
+### 13.1 Goals & Guardrails
 
 - crie ou atualize o Goal raiz;
 - crie subgoals aprovados;
@@ -337,7 +469,7 @@ Após aprovação:
 - copie Standard Guardrails para a versão ativa da Company;
 - acrescente Company Guardrails aprovados sem enfraquecer o padrão.
 
-### 12.2 Company Data
+### 13.2 Company Data
 
 Instancie:
 
@@ -347,6 +479,7 @@ Company Data/
 ├── Goals & Guardrails
 ├── Standard Guardrails (active copy)
 ├── CEO Additional Instructions
+├── CEO Config Record
 ├── Company Config
 ├── Skill Registry
 ├── Source Manifest
@@ -367,19 +500,22 @@ source_manifest:
   plan_id: "{{approved_plan_id}}"
 ```
 
-### 12.3 CEO operacional
+### 13.3 CEO operacional
 
 - gere instrução runtime conforme o template CEO;
 - referencie Company Data e documentos fixados;
-- configure budget, heartbeat, skills e permissions aprovados;
+- aplique o Operational profile aprovado do CEO Bootstrap Config;
+- configure adapter, model, workspace, budget, heartbeat, concorrência, skills e permissions aprovados;
+- teste wake-on-demand e confirme que timer heartbeat permanece desativado, salvo aprovação explícita;
+- publique `CEO Config Record` com estado desejado, estado aplicado, adaptações e resultado dos testes;
 - preserve a task de bootstrap até validação final;
 - não mantenha o conteúdo integral deste Company Start em todo heartbeat operacional.
 
-## 13. Fase 4 — Implementar as Áreas
+## 14. Fase 4 — Implementar as Áreas
 
 Para cada Area Candidate aprovada e classificada como `CREATE_NOW`:
 
-### 13.1 Criar unidade da Área
+### 14.1 Criar unidade da Área
 
 - crie Project e Goal da Área ou equivalentes aprovados;
 - conecte Goal da Área à Goal Tree;
@@ -387,7 +523,7 @@ Para cada Area Candidate aprovada e classificada como `CREATE_NOW`:
 - crie Area Database, Learning Log e Files;
 - registre estado `DRAFT`.
 
-### 13.2 Area Settings
+### 14.2 Area Settings
 
 Preencha:
 
@@ -416,7 +552,7 @@ area:
 
 Se Purpose, Scope, Goals ou Success Metrics estiverem insuficientes, mantenha a Área em `DRAFT`.
 
-### 13.3 Criar Area Leader
+### 14.3 Criar Area Leader
 
 - gere Agent Instance Spec;
 - defina reports-to CEO;
@@ -425,7 +561,7 @@ Se Purpose, Scope, Goals ou Success Metrics estiverem insuficientes, mantenha a 
 - configure budget, heartbeat e skills;
 - ative somente após validação.
 
-### 13.4 Criar agentes persistentes do Area Loop
+### 14.4 Criar agentes persistentes do Area Loop
 
 Crie sob o Area Leader:
 
@@ -449,7 +585,7 @@ Cada agente deve possuir:
 - budget e heartbeat;
 - stop conditions.
 
-### 13.5 Estruturas on-demand
+### 14.5 Estruturas on-demand
 
 Não crie antecipadamente sem necessidade:
 
@@ -461,7 +597,7 @@ Não crie antecipadamente sem necessidade:
 
 Valide apenas se Data e Execution Leader possuem permissão/processo para solicitar ou criar essas estruturas quando uma task real exigir.
 
-### 13.6 Ativar Área
+### 14.6 Ativar Área
 
 Mude a Área de `DRAFT` para `READY` e depois `ACTIVE` somente quando:
 
@@ -473,7 +609,7 @@ Mude a Área de `DRAFT` para `READY` e depois `ACTIVE` somente quando:
 - approval gate estiver configurado;
 - o loop puder registrar outputs.
 
-## 14. Fase 5 — Inicializar o Area Loop
+## 15. Fase 5 — Inicializar o Area Loop
 
 Crie uma task inicial controlada para cada Área:
 
@@ -508,27 +644,28 @@ Quando houver uma pergunta real aprovada, o primeiro ciclo segue:
 11. Learning registra em Area Data.
 12. O próximo ciclo reutiliza o aprendizado.
 
-## 15. Fase 6 — Validar o MVA
+## 16. Fase 6 — Validar o MVA
 
 Execute os testes abaixo.
 
-### 15.1 Orientação a objetivos
+### 16.1 Orientação a objetivos
 
 - [ ] Main Goal registrado;
 - [ ] Goals das Áreas ligados à Goal Tree;
 - [ ] agentes conseguem localizar Goals & Guardrails;
 - [ ] task de teste possui ancestry até o Main Goal.
 
-### 15.2 Conhecimento e agentes unificados
+### 16.2 Conhecimento e agentes unificados
 
 - [ ] Company Data existe;
 - [ ] Source Manifest registra commit;
+- [ ] CEO Config Record registra config desejado, aplicado e adaptações;
 - [ ] cada Área possui Area Data;
 - [ ] instruções referenciam fontes corretas;
 - [ ] skills e versões estão registradas;
 - [ ] nenhum agente depende de caminho inexistente.
 
-### 15.3 Inteligência e execução
+### 16.3 Inteligência e execução
 
 - [ ] Area Leader configurado;
 - [ ] Data, Analysis, Proposals e Definition existem;
@@ -537,7 +674,7 @@ Execute os testes abaixo.
 - [ ] approval gate impede execução não aprovada;
 - [ ] on-demand agents possuem processo de criação.
 
-### 15.4 Aprendizado
+### 16.4 Aprendizado
 
 - [ ] Learning existe e reporta ao Area Leader;
 - [ ] Learning recebe Decision/Execution Records;
@@ -545,19 +682,23 @@ Execute os testes abaixo.
 - [ ] Learning não pode alterar estrutura ou guardrails sozinho;
 - [ ] próximo ciclo consegue consultar aprendizados.
 
-### 15.5 Governança e operação
+### 16.5 Governança e operação
 
 - [ ] humano responsável identificado;
 - [ ] budgets e hard stops definidos;
 - [ ] permissions seguem menor privilégio;
 - [ ] heartbeats definidos;
+- [ ] CEO wake-on-demand testado;
+- [ ] timer heartbeat do CEO desativado ou explicitamente aprovado e justificado;
+- [ ] concorrência máxima do CEO configurada como 1 ou adaptação equivalente registrada;
+- [ ] adapter, model, workspace e instructions bundle do CEO validados;
 - [ ] tasks duplicadas não foram criadas;
 - [ ] Company e Areas possuem estados coerentes;
 - [ ] activity e outputs são rastreáveis.
 
 Falha crítica mantém a Company em `BOOTSTRAPPING`, `BLOCKED` ou `DEGRADED` conforme aplicável.
 
-## 16. Fase 7 — Company Start Report
+## 17. Fase 7 — Company Start Report
 
 Produza:
 
@@ -574,6 +715,16 @@ company_start_report:
   business_stage_assessment: "{{assessment_id}}"
   area_activation_plan: "{{plan_id_and_version}}"
   company_data_status: "{{status}}"
+  ceo_config_record: "{{record_id}}"
+  ceo_runtime_validation:
+    adapter: "{{adapter}}"
+    model: "{{model}}"
+    workspace: "{{workspace_or_not_applicable}}"
+    wake_on_demand: "{{test_result}}"
+    timer_heartbeat: "{{disabled_or_approved_schedule}}"
+    max_concurrent_runs: "{{value_or_adaptation}}"
+    budget: "{{approved_budget_and_usage}}"
+    permissions: "{{validation_result}}"
   areas:
     - area_id: "{{id}}"
       status: "{{status}}"
@@ -596,7 +747,7 @@ Vincule o relatório à task de bootstrap e ao Source Manifest.
 
 Mude a Company para `OPERATIONAL` somente se os critérios do MVA estiverem satisfeitos e não houver bloqueio crítico.
 
-## 17. Idempotência e reconciliação
+## 18. Idempotência e reconciliação
 
 Ao executar novamente:
 
@@ -613,7 +764,7 @@ Ao executar novamente:
 
 Atualizações do repo são propostas de migração, não comandos automáticos.
 
-## 18. Rollback
+## 19. Rollback
 
 Antes de cada estágio de `APPLY`:
 
@@ -632,7 +783,7 @@ Em falha:
 5. registre incidente e estado residual;
 6. solicite decisão humana quando rollback completo não for possível.
 
-## 19. Condição de conclusão
+## 20. Condição de conclusão
 
 O Company Start termina quando uma destas condições ocorre:
 
@@ -655,7 +806,7 @@ O Company Start termina quando uma destas condições ocorre:
 
 Em bloqueio, publique `Bootstrap Blocker Record` e não simule sucesso.
 
-## 20. Próxima evolução
+## 21. Próxima evolução
 
 Após o MVA, o CEO e o usuário podem melhorar a Company por evidência:
 

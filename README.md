@@ -79,6 +79,7 @@ Ao final do boot, a Company deve possuir:
 - Goals & Guardrails acessíveis aos agentes;
 - Company Data instanciado;
 - CEO com instruções operacionais enxutas;
+- CEO Bootstrap Config aplicado e validado;
 - Business Stage Assessment e Area Activation Plan;
 - pelo menos uma Área necessária ao Main Goal;
 - Area Data para cada Área;
