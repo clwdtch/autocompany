@@ -21,7 +21,7 @@ O MVA é um ponto de partida. O usuário pode posteriormente adicionar Áreas, a
 |---|---|
 | [`COMPANY_START.md`](./COMPANY_START.md) | Entry point executado pelo CEO para planejar, implementar, validar e ativar a Company |
 | [`COMPANY_STRUCTURE.md`](./COMPANY_STRUCTURE.md) | Estrutura organizacional, dados, agentes, fluxos e critérios do MVA |
-| [`AGENTS_CREATION_INSTRUCTIONS.md`](./AGENTS_CREATION_INSTRUCTIONS.md) | Regras e templates para criar instruções enxutas para cada agente |
+| [`AGENTS_INSTRUCTIONS.md`](./AGENTS_INSTRUCTIONS.md) | Regras e templates para criar instruções enxutas para cada agente |
 | [`STANDARD_GUARDRAILS.md`](./STANDARD_GUARDRAILS.md) | Proteções mínimas aplicáveis à Company e aos agentes |
 | [`EXPANSION_RULES.md`](./EXPANSION_RULES.md) | Regras usadas pelo CEO para decidir quando propor e ativar novas Areas |
 | [`AREA_LIBRARY.md`](./AREA_LIBRARY.md) | Catálogo das Areas de negócio disponíveis |

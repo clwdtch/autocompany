@@ -1,6 +1,6 @@
 # Company Start
 
-**Versão:** 1.2  
+**Versão:** 1.3  
 **Executor:** CEO da Company  
 **Finalidade:** planejar, implementar, validar e ativar o Minimum Viable Autonomy no Paperclip a partir deste padrão.
 
@@ -41,7 +41,7 @@ Leia integralmente, nesta ordem:
 3. `COMPANY_STRUCTURE.md`;
 4. `EXPANSION_RULES.md`;
 5. `AREA_LIBRARY.md`;
-6. `AGENTS_CREATION_INSTRUCTIONS.md`.
+6. `AGENTS_INSTRUCTIONS.md`.
 
 Registre para cada documento:
 
@@ -65,7 +65,7 @@ Durante o boot, respeite:
 5. Company Structure;
 6. Expansion Rules;
 7. Area Library;
-8. Agents Creation Instructions;
+8. Agents Instructions;
 9. plano aprovado;
 10. instruções adicionais.
 
@@ -436,7 +436,7 @@ Crie sob o Area Leader:
 - Execution Leader;
 - Learning.
 
-Use `AGENTS_CREATION_INSTRUCTIONS.md`. Não copie o documento inteiro para as instruções.
+Use `AGENTS_INSTRUCTIONS.md`. Não copie o documento inteiro para as instruções.
 
 Cada agente deve possuir:
 

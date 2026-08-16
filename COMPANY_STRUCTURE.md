@@ -1,6 +1,6 @@
 # Company Structure — Minimum Viable Autonomy
 
-**Versão:** 2.2  
+**Versão:** 2.3  
 **Finalidade:** definir a estrutura organizacional mínima que permite orientação a objetivos, operação agêntica e autoaprendizado progressivo.
 
 ## 1. Minimum Viable Autonomy
@@ -81,7 +81,7 @@ O repo contém o padrão reutilizável:
 
 - Company Start;
 - Company Structure;
-- Agents Creation Instructions;
+- Agents Instructions;
 - Standard Guardrails;
 - Expansion Rules;
 - Area Library;
@@ -194,7 +194,7 @@ Responsabilidades mínimas:
 - manter Goals, Company Data e estrutura coerentes;
 - aplicar Expansion Rules e consultar Area Library para identificar quais capacidades devem virar Areas agora e quais devem permanecer futuras;
 - criar Area Leaders;
-- criar ou autorizar agentes conforme Agents Creation Instructions;
+- criar ou autorizar agentes conforme Agents Instructions;
 - conectar skills e ferramentas autorizadas;
 - distribuir budget e prioridades;
 - resolver conflitos cross-area;
@@ -511,7 +511,7 @@ Cada agente recebe:
 - budget e heartbeat;
 - stop conditions e approvals.
 
-O padrão de geração está em `AGENTS_CREATION_INSTRUCTIONS.md`.
+O padrão de geração está em `AGENTS_INSTRUCTIONS.md`.
 
 ## 13. Persistência dos agentes no MVA
 

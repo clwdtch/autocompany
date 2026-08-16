@@ -1,6 +1,6 @@
-# Agents Creation Instructions
+# Agents Instructions
 
-**Versão:** 2.2  
+**Versão:** 2.3  
 **Finalidade:** instruir CEO e líderes a criar agentes consistentes, enxutos, rastreáveis e agnósticos de setor ou granularidade da Área.
 
 ## 1. Uso deste documento
