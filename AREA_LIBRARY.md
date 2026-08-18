@@ -1,7 +1,7 @@
 # Area Library
 
 **Versão:** 1.0  
-**Finalidade:** catálogo de Areas de negócio disponíveis para criação pela Company.
+**Finalidade:** catálogo de Areas de negócio para criação pela Company.
 
 ## Fundação
 
