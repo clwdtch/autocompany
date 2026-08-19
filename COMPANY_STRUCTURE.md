@@ -1,6 +1,6 @@
 # Company Structure — Minimum Viable Autonomy
 
-**Versão:** 2.4  
+**Versão:** 3.0  
 **Finalidade:** definir a estrutura organizacional mínima que permite orientação a objetivos, operação agêntica e autoaprendizado progressivo.
 
 ## 1. Minimum Viable Autonomy
@@ -21,7 +21,7 @@ O MVA possui quatro requisitos:
 4. **Loops de aprendizado**  
    A execução é analisada continuamente; resultados geram aprendizados registrados e incorporados aos ciclos seguintes mediante governança.
 
-O MVA não pretende representar a estrutura final. O usuário pode melhorar a Company gradualmente com novas Áreas, agentes especializados, skills, automações, integrações, budgets e políticas.
+O MVA não pretende representar a estrutura final. O usuário pode melhorar a Company gradualmente com novos Loops, agentes especializados, skills, automações, integrações, budgets e políticas.
 
 ## 2. Fronteira do MVA
 
@@ -30,18 +30,18 @@ São obrigatórios no boot:
 - Goals & Guardrails;
 - CEO;
 - Company Data;
-- pelo menos uma Área ligada ao Main Goal;
-- Area Leader;
-- Area Data;
+- pelo menos um Loop ligado ao Main Goal;
+- Loop Leader;
+- Loop Data;
 - responsabilidades persistentes de Data, Analysis, Proposals, Definition, Execution Leader e Learning;
 - capacidade de criar Internal/External Teams, squads e executores sob demanda;
 - humano no circuito;
 - budgets, permissões, approvals e heartbeats mínimos;
-- rastreabilidade do Area Loop.
+- rastreabilidade do Loop.
 
 Não são obrigatórios no boot:
 
-- múltiplas Áreas sem necessidade comprovada;
+- múltiplos Loops sem necessidade comprovada;
 - coletores especializados persistentes;
 - squads ociosos;
 - automação integral de todos os processos;
@@ -58,7 +58,7 @@ flowchart TD
     H["Humano responsável"] --> GG["Goals & Guardrails"]
     GG --> CEO["CEO"]
     CD["Company Data"] --> CEO
-    CEO --> AL["Area Leader"]
+    CEO --> AL["Loop Leader"]
     AL --> D["Data"]
     AL --> AN["Analysis"]
     AL --> P["Proposals"]
@@ -71,7 +71,7 @@ flowchart TD
     SL --> EX["Executor Agents on demand"]
 ```
 
-Este diagrama representa reporting lines. O fluxo de trabalho é descrito separadamente no Area Loop.
+Este diagrama representa reporting lines. O funcionamento dos Loops é descrito na seção 11.
 
 ## 4. Camadas de estado
 
@@ -84,7 +84,7 @@ O repo contém o padrão reutilizável:
 - Agents Instructions;
 - Standard Guardrails;
 - Expansion Rules;
-- Area Library;
+- Loop Library;
 - referências opcionais de infraestrutura, plugins e skills.
 
 O repo é fonte de padrão, não memória operacional da Company.
@@ -104,15 +104,15 @@ Company Data existe somente dentro da Company instanciada. Deve conter ou refere
 - Company Decision Log;
 - Company Learning Log;
 - registros de budgets, approvals e mudanças estruturais;
-- referências às Áreas e seus estados.
+- referências aos Loops e seus estados.
 
 Company Data é acessível conforme permissões. A existência de acesso de leitura não concede direito de alteração.
 
-### 4.3 Area Data
+### 4.3 Loop Data
 
-Cada Área possui Area Data isolado logicamente, contendo:
+Cada Loop possui Loop Data isolado logicamente, contendo:
 
-#### Area Settings
+#### Loop Settings
 
 - descrição;
 - purpose;
@@ -126,7 +126,7 @@ Cada Área possui Area Data isolado logicamente, contendo:
 - ferramentas e skills;
 - versão.
 
-#### Area Database
+#### Loop Database
 
 - dados internos e externos;
 - Evidence Records;
@@ -157,7 +157,7 @@ Cada Área possui Area Data isolado logicamente, contendo:
 - documentos;
 - anexos e fontes autorizadas.
 
-O Area Leader lê e atualiza Area Settings, decisões e prioridades. Data coordena o acesso e a organização dos dados. Learning registra aprendizados. Os demais agentes registram seus artefatos no Area Database.
+O Loop Leader lê e atualiza Loop Settings, decisões e prioridades. Data coordena o acesso e a organização dos dados. Learning registra aprendizados. Os demais agentes registram seus artefatos no Loop Database.
 
 ## 5. Goals & Guardrails
 
@@ -182,9 +182,9 @@ O CEO pode criar subgoals quando necessário, desde que:
 - não ampliem silenciosamente a autoridade da Company;
 - sejam registrados em Company Data.
 
-### 5.3 Responsabilidade da Área
+### 5.3 Responsabilidade do Loop
 
-Cada Área recebe Goals próprios ligados à Goal Tree. Nenhuma task pode existir sem relação identificável com um Goal ou com manutenção necessária da estrutura autorizada.
+Cada Loop recebe Goals próprios ligados à Goal Tree. Nenhuma task pode existir sem relação identificável com um Goal ou com manutenção necessária da estrutura autorizada.
 
 ## 6. CEO
 
@@ -193,50 +193,50 @@ O CEO é responsável por conduzir a Company em direção aos Goals dentro dos G
 Responsabilidades mínimas:
 
 - manter Goals, Company Data e estrutura coerentes;
-- aplicar Expansion Rules e consultar Area Library para identificar quais capacidades devem virar Areas agora e quais devem permanecer futuras;
-- criar Area Leaders;
+- aplicar Expansion Rules e consultar Loop Library para identificar quais capacidades devem virar Loops agora e quais devem permanecer futuras;
+- criar Loop Leaders;
 - criar ou autorizar agentes conforme Agents Instructions;
 - conectar skills e ferramentas autorizadas;
 - distribuir budget e prioridades;
-- resolver conflitos cross-area;
+- resolver conflitos cross-loop;
 - escalar decisões reservadas ao humano;
 - revisar aprendizados com impacto corporativo;
 - manter a Company no MVA ou em nível superior aprovado.
 
-O CEO não executa rotineiramente o trabalho das Áreas e não microgerencia tasks de squads.
+O CEO não executa rotineiramente o trabalho dos Loops e não microgerencia tasks de squads.
 
-## 7. Área
+## 7. Loop
 
-Uma Área é uma célula operacional autoevolutiva. Sua estrutura é a mesma para scopes amplos ou específicos.
+Um Loop é uma unidade organizacional autoevolutiva definida por Scope & Goals, memória, liderança, agentes e um fluxo contínuo de inteligência, execução e aprendizado. Sua estrutura é a mesma para scopes amplos ou específicos.
 
-Cada Área possui:
+Cada Loop possui:
 
-- Area Settings;
-- Area Leader;
-- Area Data;
+- Loop Settings;
+- Loop Leader;
+- Loop Data;
 - time de inteligência;
 - time de execução;
 - Learning Agent;
 - humano no circuito por meio dos approvals aplicáveis.
 
-### 7.1 Area Leader
+### 7.1 Loop Leader
 
-O Area Leader é dono do resultado da Área. Ele:
+O Loop Leader é dono do resultado do Loop. Ele:
 
 - mantém Scope & Goals;
 - define prioridades e perguntas;
-- orquestra o Area Loop;
+- orquestra o fluxo completo do Loop;
 - coordena inteligência, definição, execução e aprendizado;
 - aprova decisões dentro de seus decision rights;
 - escala o restante ao CEO ou humano;
 - acompanha métricas, budget, riscos e dependências;
-- propõe evolução da Área.
+- propõe evolução do Loop.
 
-Não existe Intelligence Leader obrigatório no MVA. Uma Área pode criar coordenação adicional posteriormente quando volume ou complexidade justificarem.
+Não existe Intelligence Leader obrigatório no MVA. Um Loop pode criar coordenação adicional posteriormente quando volume ou complexidade justificarem.
 
-### 7.2 Formação e fronteira de uma Area
+### 7.2 Formação e fronteira de um Loop
 
-Uma Area é uma unidade de responsabilidade com:
+Um Loop é uma unidade de responsabilidade com:
 
 - purpose e Scope próprios;
 - Goals ligados ao Main Goal;
@@ -247,7 +247,7 @@ Uma Area é uma unidade de responsabilidade com:
 - budget ou política de consumo;
 - capacidade de inteligência, execução e aprendizado.
 
-Uma Area pode representar:
+Um Loop pode representar:
 
 - uma função ampla, como Marketing ou Jurídico;
 - uma unidade de negócio, produto, mercado ou localização;
@@ -255,9 +255,9 @@ Uma Area pode representar:
 - um resultado específico;
 - uma capacidade temporária necessária a um Goal.
 
-O nome da Area é apenas um rótulo. Seu contrato real é o `Area Settings`, especialmente Purpose, Scope, Out of Scope, Goals, Metrics e Decision Rights.
+O nome do Loop é apenas um rótulo. Seu contrato real é o `Loop Settings`, especialmente Purpose, Scope, Out of Scope, Goals, Metrics e Decision Rights.
 
-Não crie uma Area apenas porque ela existe em organogramas tradicionais ou aparece na Area Library. A separação precisa demonstrar ao menos um dos seguintes motivos:
+Não crie um Loop apenas porque ele existe em organogramas tradicionais ou aparece na Loop Library. A separação precisa demonstrar ao menos um dos seguintes motivos:
 
 - objetivo próprio e mensurável;
 - conhecimento, dados, skills ou guardrails específicos;
@@ -276,7 +276,7 @@ Considere dois eixos:
 - **Scope:** amplo ou específico;
 - **Goals:** abrangentes ou delimitados.
 
-Use uma Area ampla quando:
+Use um Loop amplo quando:
 
 - o volume inicial é baixo;
 - os processos ainda são desconhecidos;
@@ -284,7 +284,7 @@ Use uma Area ampla quando:
 - a separação criaria agentes ociosos;
 - os objetivos ainda são fortemente dependentes.
 
-Use uma Area específica quando:
+Use um Loop específico quando:
 
 - existe alta frequência de trabalho;
 - o resultado pode ser medido isoladamente;
@@ -311,14 +311,14 @@ A Company não cria toda a árvore antecipadamente. Ela começa no nível mínim
 
 #### Criar
 
-Crie uma Area quando uma capacidade necessária a um Goal não estiver adequadamente coberta e os critérios da seção 7.2 forem satisfeitos. `AREA_LIBRARY.md` pode fornecer a candidata, `EXPANSION_RULES.md` determina se o momento de ativação é válido e esta seção determina se a separação estrutural é válida.
+Crie um Loop quando uma capacidade necessária a um Goal não estiver adequadamente coberta e os critérios da seção 7.2 forem satisfeitos. `LOOP_LIBRARY.md` pode fornecer um template candidato, `EXPANSION_RULES.md` determina se o momento de ativação é válido e esta seção determina se a separação estrutural é válida.
 
 #### Dividir
 
 Considere dividir quando:
 
 - Scope & Goals deixarem de caber em um contrato claro;
-- o Area Leader se tornar gargalo recorrente;
+- o Loop Leader se tornar gargalo recorrente;
 - existirem fluxos com dados, skills ou guardrails muito diferentes;
 - conflitos de prioridade se repetirem;
 - uma subcapacidade possuir volume e métricas próprios;
@@ -332,7 +332,7 @@ Considere combinar quando:
 - Goals se tornarem inseparáveis;
 - o volume não justificar estruturas distintas;
 - handoffs criarem mais custo do que valor;
-- as Areas utilizarem as mesmas skills, stakeholders e decision rights.
+- os Loops utilizarem as mesmas skills, stakeholders e decision rights.
 
 #### Pausar ou encerrar
 
@@ -340,15 +340,15 @@ Considere pausa ou encerramento quando:
 
 - o Goal for concluído ou removido;
 - não houver mais trabalho recorrente;
-- a Area deixar de contribuir ao Main Goal;
+- o Loop deixar de contribuir ao Main Goal;
 - o custo superar o valor;
-- suas responsabilidades forem absorvidas por outra Area.
+- suas responsabilidades forem absorvidas por outro Loop.
 
 Dados, decisões e aprendizados devem ser preservados conforme política de retenção. Pausa ou encerramento não autoriza exclusão silenciosa de histórico.
 
 ### 7.5 Mudança estrutural
 
-CEO, Area Leader ou Learning podem propor criação, divisão, combinação, pausa ou encerramento. A proposta deve conter:
+CEO, Loop Leader ou Learning podem propor criação, divisão, combinação, pausa ou encerramento. A proposta deve conter:
 
 - evidências observadas;
 - problema da estrutura atual;
@@ -364,9 +364,9 @@ Learning registra e propõe; não aplica mudança estrutural autonomamente. Muda
 
 ### 7.6 Fronteira com expansão e biblioteca
 
-- `AREA_LIBRARY.md` define **quais Areas estão disponíveis no catálogo**.
+- `LOOP_LIBRARY.md` define **quais Loops estão disponíveis no catálogo**.
 - `EXPANSION_RULES.md` define **quando uma candidata pode ser proposta e ativada**.
-- `COMPANY_STRUCTURE.md` define **como uma Area aprovada é formada, opera, evolui e se relaciona com a Company**.
+- `COMPANY_STRUCTURE.md` define **como um Loop aprovado é formado, opera, evolui e se relaciona com a Company**.
 
 ## 8. Time de inteligência
 
@@ -375,7 +375,7 @@ O time de inteligência transforma contexto e dados em uma decisão rastreável.
 ### 8.1 Data
 
 - identifica necessidades de informação;
-- acessa e organiza Area Data;
+- acessa e organiza Loop Data;
 - coordena Internal e External Teams;
 - normaliza, deduplica e versiona dados;
 - registra fontes, qualidade, atualidade e limitações;
@@ -439,7 +439,7 @@ Squads e executores são encerrados ou pausados quando sua finalidade termina, p
 
 ## 10. Learning
 
-Learning é independente do time de execução e reporta ao Area Leader.
+Learning é independente do time de execução e reporta ao Loop Leader.
 
 Ele:
 
@@ -450,11 +450,11 @@ Ele:
 - atualiza confiança de hipóteses;
 - registra Learning Record;
 - sugere mudanças de coleta, análise, propostas, definição e execução;
-- escala aprendizados cross-area ao CEO.
+- escala aprendizados cross-loop ao CEO.
 
 Learning registra e propõe. Mudanças materiais seguem guardrails e approvals.
 
-## 11. Area Loop
+## 11. Funcionamento do Loop
 
 ```mermaid
 flowchart LR
@@ -464,7 +464,7 @@ flowchart LR
     DF --> AP["Approval gate"]
     AP --> E["Execution"]
     E --> L["Learning"]
-    L --> AD["Area Data"]
+    L --> AD["Loop Data"]
     AD --> D
 ```
 
@@ -481,8 +481,8 @@ flowchart LR
 
 ### 11.2 Approval gate
 
-- Area Leader aprova decisões dentro de seus decision rights.
-- CEO aprova decisões cross-area ou acima da autoridade da Área.
+- Loop Leader aprova decisões dentro de seus decision rights.
+- CEO aprova decisões cross-loop ou acima da autoridade do Loop.
 - Humano aprova decisões reservadas por Goals & Guardrails.
 
 ### 11.3 Retornos obrigatórios
@@ -491,8 +491,8 @@ flowchart LR
 - Executor Agents devolvem resultados ao Squad Leader.
 - Squad Leader devolve Squad Result ao Execution Leader.
 - Execution Leader devolve resultado consolidado ao Learning.
-- Learning escreve em Area Data.
-- O ciclo seguinte utiliza Area Data atualizado.
+- Learning escreve em Loop Data.
+- O ciclo seguinte utiliza Loop Data atualizado.
 
 ## 12. Instruções e skills dos agentes
 
@@ -502,10 +502,10 @@ Cada agente recebe:
 
 - identidade e papel;
 - reports-to;
-- Company e Area aplicáveis;
+- Company e Loop aplicáveis;
 - Goals e Scope;
 - referências versionadas aos documentos normativos;
-- local de Company Data e Area Data;
+- local de Company Data e Loop Data;
 - inputs e outputs;
 - decision rights;
 - tools, skills e permissões;
@@ -519,7 +519,7 @@ O padrão de geração está em `AGENTS_INSTRUCTIONS.md`.
 ### Persistentes
 
 - CEO;
-- Area Leader;
+- Loop Leader;
 - Data;
 - Analysis;
 - Proposals;
@@ -544,15 +544,15 @@ A Company pode consolidar papéis no mesmo runtime somente quando explicitamente
 | Company | Company |
 | Main Goal | Goal raiz |
 | Subgoal | Goal descendente |
-| Área | Project e Goal da Área |
-| Area Settings | Documento do Project/Area Data |
+| Loop | Project e Goal do Loop |
+| Loop Settings | Documento do Project/Loop Data |
 | Agente | Agent no org chart |
 | Reporting line | `reports_to` |
 | Ciclo de inteligência | Issue com sub-issues e work products |
 | Decisão | Decision Record e approval aplicável |
 | Execução | Issue/sub-issues atribuídas a squad e executores |
 | Aprendizado | Learning Record e task de melhoria |
-| Company/Area Data | Documents, workspace e work products com acesso controlado |
+| Company Data/Loop Data | Documents, workspace e work products com acesso controlado |
 | Rotina | Routine/heartbeat quando necessário |
 | Budget | Política de budget da Company, agentes, goals ou projects |
 
@@ -568,7 +568,7 @@ O mapeamento deve usar os recursos disponíveis na versão instalada do Papercli
 - `PAUSED`
 - `ARCHIVED`
 
-### Área
+### Loop
 
 - `DRAFT`
 - `READY`
@@ -598,14 +598,14 @@ A Company alcança MVA quando:
 - Goals & Guardrails estão registrados e acessíveis;
 - CEO e humano responsável estão identificados;
 - Company Data existe e contém Source Manifest;
-- existe pelo menos uma Área necessária ao Main Goal;
-- cada Área possui Area Settings e Area Data;
-- responsabilidades persistentes do Area Loop estão atribuídas;
+- existe pelo menos um Loop necessário ao Main Goal;
+- cada Loop possui Loop Settings e Loop Data;
+- responsabilidades persistentes do Loop estão atribuídas;
 - inteligência e execução estão separadas;
 - reporting lines e decision rights estão definidos;
 - existe approval gate antes de execução material;
 - o resultado da execução chega a Learning;
-- Learning registra no Area Data;
+- Learning registra no Loop Data;
 - budgets, permissões e heartbeats estão definidos;
 - uma task pode ser rastreada até um Goal;
 - o Company Start Report não contém conflito crítico aberto.
@@ -615,13 +615,13 @@ A Company alcança MVA quando:
 Depois do MVA, a Company pode melhorar mediante evidência:
 
 - criar agentes coletores persistentes;
-- dividir ou combinar Áreas;
+- dividir ou combinar Loops;
 - especializar Analysis, Proposals ou Execution;
 - instalar plugins;
 - adicionar integrações e automações;
 - elevar frequência de heartbeats;
 - ampliar autonomia dentro de guardrails;
 - criar novos loops e métricas;
-- importar aprendizados cross-area.
+- importar aprendizados cross-loop.
 
 Toda evolução segue o ciclo de aprendizado e as aprovações aplicáveis.

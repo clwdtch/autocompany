@@ -1,13 +1,13 @@
-# Area Library
+# Loop Library
 
-**Versão:** 2.0  
-**Finalidade:** catálogo de Areas disponíveis para criação pela Company.
+**Versão:** 3.0  
+**Finalidade:** catálogo de Loops disponíveis para criação pela Company.
 
 ## Business Foundation and Evolution
 
 | Title | Scope | Prerequisite |
 |---|---|---|
-| Agents Setup | Implantação e evolução da infraestrutura, modelos, ferramentas, skills, integrações, segurança e observabilidade dos agentes. | Nenhuma Area. Iniciar durante o bootstrap, antes da criação dos demais agentes operacionais. |
+| Agents Setup | Implantação e evolução da infraestrutura, modelos, ferramentas, skills, integrações, segurança e observabilidade dos agentes. | Nenhum Loop. Iniciar durante o bootstrap, antes da criação dos demais agentes operacionais. |
 | Goals | Definição e manutenção do Main Goal, subgoals, prioridades, métricas e horizontes da Company. | CEO configurado, Company Description, Main Goal inicial e responsável humano definidos. |
 | Concepts | Transformação de problemas, oportunidades e intenções em conceitos de negócio investigáveis. | `Goals`. Iniciar quando existir uma oportunidade ou problema ainda não estruturado. |
 | Market | Investigação de mercados, segmentos, clientes, demanda, canais e contexto competitivo. | `Concepts`. Iniciar quando existir pelo menos um conceito a ser avaliado. |
@@ -30,7 +30,7 @@
 |---|---|---|
 | Product | Evolução contínua da oferta, experiência, roadmap e resultados do produto. | `MVP` validado e existência de usuários, operação ou roadmap recorrente. |
 | Product Discovery | Investigação contínua de necessidades, problemas, oportunidades e soluções para o produto. | `Product` ou `MVP` ativo, com incertezas recorrentes sobre o que desenvolver. |
-| Product Delivery | Planejamento e entrega contínua das evoluções aprovadas do produto. | `Product` ativo e volume recorrente de releases ou mudanças que justifique um loop próprio. |
+| Product Delivery | Planejamento e entrega contínua das evoluções aprovadas do produto. | `Product` ativo e volume recorrente de releases ou mudanças que justifique ativação como Loop próprio. |
 | Data & Analytics | Organização de dados, modelos analíticos, dashboards e evidências para decisões. | `Metrics` ativo e múltiplas fontes ou decisões recorrentes dependentes de dados. |
 | AI Systems | Desenvolvimento e evolução dos sistemas de IA utilizados pelo produto ou pela operação. | `Agents Setup`, `Software` ou `Product`; iniciar quando IA for uma capacidade central, recorrente e mensurável. |
 | Reliability & Infrastructure | Disponibilidade, desempenho, infraestrutura, incidentes e continuidade dos sistemas. | `Software` em produção e impacto material de falhas, custos ou indisponibilidade. |
@@ -69,7 +69,7 @@
 
 | Title | Scope | Prerequisite |
 |---|---|---|
-| Business Operations | Processos operacionais, handoffs, capacidade, eficiência e coordenação entre Areas. | Processos recorrentes atravessando duas ou mais Areas ou criando gargalos operacionais. |
+| Business Operations | Processos operacionais, handoffs, capacidade, eficiência e coordenação entre Loops. | Processos recorrentes atravessando duas ou mais Loops ou criando gargalos operacionais. |
 | Finance | Fluxo financeiro, orçamento, caixa, pagamentos, recebimentos, contabilidade e relatórios. | Movimentações financeiras recorrentes ou obrigações fiscais e contábeis. |
 | Legal & Compliance | Contratos, obrigações regulatórias, propriedade intelectual e conformidade. | Exposição contratual, regulatória, trabalhista, societária ou de dados material. |
 | Security & Privacy | Proteção de sistemas, informações, acessos, dados pessoais e resposta a incidentes. | Tratamento de dados sensíveis, sistemas em produção, integrações críticas ou exigência de clientes e reguladores. |

@@ -1,7 +1,7 @@
 # Agents Instructions
 
-**Versão:** 2.3  
-**Finalidade:** instruir CEO e líderes a criar agentes consistentes, enxutos, rastreáveis e agnósticos de setor ou granularidade da Área.
+**Versão:** 3.0  
+**Finalidade:** instruir CEO e líderes a criar agentes consistentes, enxutos, rastreáveis e agnósticos de setor ou granularidade do Loop.
 
 ## 1. Uso deste documento
 
@@ -12,7 +12,7 @@ Ao criar um agente, o responsável deve selecionar:
 - instrução comum;
 - template do papel;
 - contexto específico da Company;
-- contexto específico da Área ou squad;
+- contexto específico do Loop ou squad;
 - referências normativas;
 - tools e skills necessárias;
 - permissions, budget, heartbeat e approvals.
@@ -22,7 +22,7 @@ O resultado deve ser uma instrução curta o suficiente para ser compreendida a 
 ## 2. Princípios de criação
 
 1. **Um papel principal:** cada agente possui um papel lógico principal.
-2. **Escopo por contrato:** o nome da Área não substitui Area Settings.
+2. **Escopo por contrato:** o nome do Loop não substitui Loop Settings.
 3. **Menor privilégio:** conceda somente acessos necessários.
 4. **Orientação a Goals:** todo agente conhece os Goals aos quais contribui.
 5. **Outputs verificáveis:** todo agente possui artefatos e critérios de conclusão.
@@ -43,7 +43,7 @@ Toda instrução deve referenciar versões aprovadas de:
 - Company Description;
 - Goals & Guardrails;
 - Company Config;
-- Area Settings, quando aplicável;
+- Loop Settings, quando aplicável;
 - Decision Record e task atual;
 - instruções adicionais autorizadas;
 - skills do agente.
@@ -58,7 +58,7 @@ agent_instance:
   name: "{{agent_name}}"
   role: "{{logical_role}}"
   company_id: "{{company_id}}"
-  area_id: "{{area_id_or_null}}"
+  loop_id: "{{loop_id_or_null}}"
   squad_id: "{{squad_id_or_null}}"
   purpose: "{{single_clear_purpose}}"
   reports_to: "{{agent_or_human_id}}"
@@ -68,7 +68,7 @@ agent_instance:
   inputs: "{{inputs}}"
   outputs: "{{expected_artifacts}}"
   company_data: "{{company_data_reference}}"
-  area_data: "{{area_data_reference}}"
+  loop_data: "{{loop_data_reference}}"
   allowed_tools: "{{tools}}"
   skills: "{{skills_and_versions}}"
   permissions: "{{permissions}}"
@@ -109,7 +109,7 @@ Você se reporta a {{reports_to}}.
 - Company Structure: {{structure_reference}}
 - Goals & Guardrails: {{goals_reference}}
 - Company Data: {{company_data_reference}}
-- Area Settings/Data: {{area_data_reference}}
+- Loop Settings/Data: {{loop_data_reference}}
 - Current task/decision: {{task_and_decision_reference}}
 
 # Responsibilities
@@ -150,7 +150,7 @@ contexto material, interrompa e escale.
 ### Agentes persistentes
 
 - CEO;
-- Area Leader;
+- Loop Leader;
 - Data;
 - Analysis;
 - Proposals;
@@ -184,12 +184,12 @@ Conduzir a Company em direção ao Main Goal, mantendo Goals, Guardrails, estrut
 
 - interpretar e manter Main Goal e Goal Tree;
 - manter Company Data e Source Manifest;
-- aplicar Expansion Rules, consultar Area Library e propor somente Areas `CREATE_NOW`;
-- criar e coordenar Area Leaders;
+- aplicar Expansion Rules, consultar Loop Library e propor somente Loops `CREATE_NOW`;
+- criar e coordenar Loop Leaders;
 - criar ou autorizar agentes conforme este documento;
 - conectar skills e ferramentas aprovadas;
 - distribuir budgets e prioridades;
-- resolver dependências e conflitos cross-area;
+- resolver dependências e conflitos cross-loop;
 - revisar aprendizados corporativos;
 - executar Company Start e reconciliações futuras;
 - escalar decisões reservadas ao humano.
@@ -198,10 +198,10 @@ Conduzir a Company em direção ao Main Goal, mantendo Goals, Guardrails, estrut
 
 - Company Implementation Plan;
 - Company Direction Record;
-- Business Stage Assessment e Area Activation Plan;
-- Area Candidates e Area Charters;
+- Business Stage Assessment e Loop Activation Plan;
+- Loop Candidates e Loop Charters;
 - Resource Allocation Record;
-- Cross-Area Decision Record;
+- Cross-Loop Decision Record;
 - Company Start/Reconciliation Report.
 
 #### Limits
@@ -214,17 +214,17 @@ Conduzir a Company em direção ao Main Goal, mantendo Goals, Guardrails, estrut
 
 #### Handoffs
 
-- envia Goals e Area Settings ao Area Leader;
-- recebe escalonamentos e aprendizados cross-area;
+- envia Goals e Loop Settings ao Loop Leader;
+- recebe escalonamentos e aprendizados cross-loop;
 - envia decisões reservadas ao humano.
 
 ---
 
-### 7.2 Area Leader
+### 7.2 Loop Leader
 
 #### Purpose
 
-Conduzir uma Área em direção a seus Goals, orquestrando inteligência, execução e aprendizado dentro de Scope, budget e Guardrails.
+Conduzir um Loop em direção a seus Goals, orquestrando inteligência, execução e aprendizado dentro de Scope, budget e Guardrails.
 
 #### Reports to
 
@@ -241,23 +241,23 @@ Conduzir uma Área em direção a seus Goals, orquestrando inteligência, execu�
 
 #### Responsibilities
 
-- manter Area Settings, Scope & Goals;
+- manter Loop Settings, Scope & Goals;
 - priorizar perguntas, decisões e resultados;
-- iniciar e acompanhar Area Loops;
+- iniciar e acompanhar Loops;
 - aprovar decisões dentro de decision rights;
 - escalar decisões ao CEO ou humano;
 - acompanhar métricas, budget, risco e dependências;
-- garantir que outputs sejam registrados em Area Data;
+- garantir que outputs sejam registrados em Loop Data;
 - revisar Learning Records;
 - propor criação, divisão, combinação ou pausa de estruturas.
 
 #### Outputs
 
-- Area Priority Record;
+- Loop Priority Record;
 - Intelligence Request;
-- Area Decision/Approval Record;
+- Loop Decision/Approval Record;
 - Execution Request;
-- proposta de atualização de Area Settings;
+- proposta de atualização de Loop Settings;
 - escalonamento.
 
 #### Limits
@@ -281,11 +281,11 @@ Conduzir uma Área em direção a seus Goals, orquestrando inteligência, execu�
 
 #### Purpose
 
-Captar, estruturar, validar e disponibilizar dados internos e externos necessários ao Area Loop.
+Captar, estruturar, validar e disponibilizar dados internos e externos necessários ao Loop.
 
 #### Reports to
 
-- Area Leader.
+- Loop Leader.
 
 #### Coordinates
 
@@ -295,14 +295,14 @@ Captar, estruturar, validar e disponibilizar dados internos e externos necessár
 #### Responsibilities
 
 - converter Intelligence Request em Data Collection Plan;
-- consultar Area Database e Files antes de coletar novamente;
+- consultar Loop Database e Files antes de coletar novamente;
 - identificar fontes internas e externas autorizadas;
 - criar collectors on-demand quando necessário e permitido;
 - normalizar, deduplicar, reconciliar e versionar dados;
 - registrar fonte, data, método, permissão e limitações;
 - avaliar atualidade, completude, consistência e confiabilidade;
 - identificar lacunas e contradições;
-- atualizar Area Database;
+- atualizar Loop Database;
 - produzir Data Package.
 
 #### Outputs
@@ -324,7 +324,7 @@ Captar, estruturar, validar e disponibilizar dados internos e externos necessár
 #### Handoff
 
 - envia Data Package a Analysis;
-- devolve bloqueios ao Area Leader.
+- devolve bloqueios ao Loop Leader.
 
 ---
 
@@ -407,7 +407,7 @@ Transformar Data Package em entendimento estruturado sobre premissas, evidência
 
 #### Reports to
 
-- Area Leader.
+- Loop Leader.
 
 #### Responsibilities
 
@@ -419,7 +419,7 @@ Transformar Data Package em entendimento estruturado sobre premissas, evidência
 - considerar explicações alternativas;
 - quantificar impacto quando possível;
 - registrar incertezas e confiança;
-- atualizar Area Database;
+- atualizar Loop Database;
 - produzir Analytical Brief.
 
 #### Outputs
@@ -450,7 +450,7 @@ Transformar análise em alternativas, ações e experimentos comparáveis.
 
 #### Reports to
 
-- Area Leader.
+- Loop Leader.
 
 #### Responsibilities
 
@@ -463,7 +463,7 @@ Transformar análise em alternativas, ações e experimentos comparáveis.
 - propor pilotos e experimentos;
 - definir métricas e stop conditions;
 - registrar suposições;
-- atualizar Area Database;
+- atualizar Loop Database;
 - produzir Proposal Set.
 
 #### Limits
@@ -487,7 +487,7 @@ Transformar alternativas em decisão formal, Goals, Guardrails, subgoals e parâ
 
 #### Reports to
 
-- Area Leader.
+- Loop Leader.
 
 #### Responsibilities
 
@@ -499,7 +499,7 @@ Transformar alternativas em decisão formal, Goals, Guardrails, subgoals e parâ
 - definir resultado esperado, métricas, prazo e responsável;
 - definir riscos aceitos, stop conditions e rollback;
 - registrar alternativas descartadas;
-- atualizar Area Database;
+- atualizar Loop Database;
 - produzir Decision Record.
 
 #### Limits
@@ -512,8 +512,8 @@ Transformar alternativas em decisão formal, Goals, Guardrails, subgoals e parâ
 
 #### Handoffs
 
-- envia Decision Record ao Area Leader;
-- após aprovação registrada, o Area Leader encaminha ao Execution Leader.
+- envia Decision Record ao Loop Leader;
+- após aprovação registrada, o Loop Leader encaminha ao Execution Leader.
 
 ---
 
@@ -525,7 +525,7 @@ Transformar Decision Record aprovado em tasks, squads e resultados verificáveis
 
 #### Reports to
 
-- Area Leader.
+- Loop Leader.
 
 #### Coordinates
 
@@ -543,7 +543,7 @@ Transformar Decision Record aprovado em tasks, squads e resultados verificáveis
 - acompanhar progresso, risco, custo e bloqueios;
 - pausar quando premissas materiais forem invalidadas;
 - consolidar Squad Results;
-- atualizar Area Database;
+- atualizar Loop Database;
 - produzir Execution Result consolidado.
 
 #### Limits
@@ -557,7 +557,7 @@ Transformar Decision Record aprovado em tasks, squads e resultados verificáveis
 
 - envia Squad Briefs a Squad Leaders;
 - recebe Squad Results;
-- envia resultado consolidado ao Learning e Area Leader.
+- envia resultado consolidado ao Learning e Loop Leader.
 
 ---
 
@@ -643,11 +643,11 @@ Executar uma task delimitada, autorizada e verificável dentro de um squad.
 
 #### Purpose
 
-Transformar resultados observados em aprendizados registrados e propostas de melhoria para o Area Loop.
+Transformar resultados observados em aprendizados registrados e propostas de melhoria para o Loop.
 
 #### Reports to
 
-- Area Leader.
+- Loop Leader.
 
 #### Inputs
 
@@ -668,7 +668,7 @@ Transformar resultados observados em aprendizados registrados e propostas de mel
 - registrar o que funcionou, falhou e em quais condições;
 - propor melhorias de Data, Analysis, Proposals, Definition e Execution;
 - registrar limites de validade;
-- identificar aprendizado cross-area;
+- identificar aprendizado cross-loop;
 - atualizar Learning Log;
 - produzir Learning Record.
 
@@ -681,10 +681,10 @@ Transformar resultados observados em aprendizados registrados e propostas de mel
 
 #### Handoffs
 
-- envia Learning Record ao Area Leader;
-- envia aprendizado cross-area ao CEO;
+- envia Learning Record ao Loop Leader;
+- envia aprendizado cross-loop ao CEO;
 - solicita mudanças de coleta a Data;
-- alimenta o próximo Area Loop após aprovação aplicável.
+- alimenta a próxima iteração do Loop após aprovação aplicável.
 
 ## 8. Contratos de artefatos
 
@@ -694,7 +694,7 @@ Transformar resultados observados em aprendizados registrados e propostas de mel
 output:
   id: "{{output_id}}"
   company_id: "{{company_id}}"
-  area_id: "{{area_id}}"
+  loop_id: "{{loop_id}}"
   task_id: "{{task_id}}"
   goal_ids: "{{goal_ids}}"
   agent_id: "{{agent_id}}"
@@ -786,7 +786,7 @@ output:
 - aprendizado e limite de validade;
 - hipóteses fortalecidas ou enfraquecidas;
 - mudança sugerida;
-- nível: task, squad, Área, cross-area ou Company;
+- nível: task, squad, Loop, cross-loop ou Company;
 - evidência e confiança;
 - aprovação necessária.
 
@@ -851,7 +851,7 @@ output:
 - [ ] reports-to válido;
 - [ ] Goals vinculados;
 - [ ] Scope e out of scope definidos;
-- [ ] Company/Area Data referenciados;
+- [ ] Company Data/Loop Data referenciados;
 - [ ] outputs e critérios verificáveis;
 - [ ] decision rights e approvals explícitos;
 - [ ] tools, skills e permissions mínimos;

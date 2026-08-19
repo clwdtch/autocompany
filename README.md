@@ -4,6 +4,8 @@ Blueprint genérico para iniciar uma empresa com **Minimum Viable Autonomy (MVA)
 
 O repositório contém o padrão-fonte da organização. Cada Company criada a partir dele mantém seu próprio estado, dados, objetivos, guardrails, agentes e aprendizados.
 
+Um **Loop** é a unidade organizacional autoevolutiva da Company: possui Scope & Goals, memória, liderança, agentes e um fluxo contínuo de inteligência, execução e aprendizado.
+
 ## Minimum Viable Autonomy
 
 MVA é a composição mínima necessária para que uma empresa possua um grau inicial de autonomia e autoaprendizado. O modelo exige quatro capacidades:
@@ -13,7 +15,7 @@ MVA é a composição mínima necessária para que uma empresa possua um grau in
 3. **Inteligência separada de execução:** a empresa distingue coleta, análise, propostas e definição do trabalho que executa as decisões.
 4. **Loop de aprendizado:** os resultados da execução são avaliados e transformados em aprendizados que alimentam os ciclos seguintes.
 
-O MVA é um ponto de partida. O usuário pode posteriormente adicionar Áreas, agentes especializados, automações, skills, integrações, squads e controles mais sofisticados.
+O MVA é um ponto de partida. O usuário pode posteriormente adicionar Loops, agentes especializados, automações, skills, integrações, squads e controles mais sofisticados.
 
 ## Documentos do padrão
 
@@ -23,8 +25,8 @@ O MVA é um ponto de partida. O usuário pode posteriormente adicionar Áreas, a
 | [`COMPANY_STRUCTURE.md`](./COMPANY_STRUCTURE.md) | Estrutura organizacional, dados, agentes, fluxos e critérios do MVA |
 | [`AGENTS_INSTRUCTIONS.md`](./AGENTS_INSTRUCTIONS.md) | Regras e templates para criar instruções enxutas para cada agente |
 | [`STANDARD_GUARDRAILS.md`](./STANDARD_GUARDRAILS.md) | Proteções mínimas aplicáveis à Company e aos agentes |
-| [`EXPANSION_RULES.md`](./EXPANSION_RULES.md) | Regras usadas pelo CEO para decidir quando propor e ativar novas Areas |
-| [`AREA_LIBRARY.md`](./AREA_LIBRARY.md) | Catálogo das Areas de negócio disponíveis |
+| [`EXPANSION_RULES.md`](./EXPANSION_RULES.md) | Regras usadas pelo CEO para decidir quando propor e ativar novos Loops |
+| [`LOOP_LIBRARY.md`](./LOOP_LIBRARY.md) | Catálogo dos Loops de negócio disponíveis |
 
 `Plugin Base` e outras integrações são extensões opcionais. A implantação inicial do MVA não pode depender delas.
 
@@ -32,7 +34,7 @@ O MVA é um ponto de partida. O usuário pode posteriormente adicionar Áreas, a
 
 - **Repo:** contém o padrão reutilizável.
 - **Company Data:** contém documentos e configurações exclusivos da Company.
-- **Area Data:** contém configurações, dados, arquivos, resultados e aprendizados exclusivos de uma Área.
+- **Loop Data:** contém configurações, dados, arquivos, resultados e aprendizados exclusivos de um Loop.
 
 Uma Company deve registrar a URL, branch, commit e versão do padrão utilizado. Atualizações do repo não alteram silenciosamente Companies já implantadas.
 
@@ -80,11 +82,11 @@ Ao final do boot, a Company deve possuir:
 - Company Data instanciado;
 - CEO com instruções operacionais enxutas;
 - CEO Bootstrap Config aplicado e validado;
-- Business Stage Assessment e Area Activation Plan;
-- pelo menos uma Área necessária ao Main Goal;
-- Area Data para cada Área;
+- Business Stage Assessment e Loop Activation Plan;
+- pelo menos um Loop necessário ao Main Goal;
+- Loop Data para cada Loop;
 - times mínimos de inteligência e execução;
-- um Area Loop rastreável;
+- um Loop rastreável;
 - humano no circuito de aprovação;
 - budgets, permissões e heartbeats definidos;
 - Company Start Report;

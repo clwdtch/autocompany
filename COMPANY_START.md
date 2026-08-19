@@ -1,6 +1,6 @@
 # Company Start
 
-**Versão:** 1.4  
+**Versão:** 2.0  
 **Executor:** CEO da Company  
 **Finalidade:** planejar, implementar, validar e ativar o Minimum Viable Autonomy no Paperclip a partir deste padrão.
 
@@ -26,9 +26,9 @@ Você não deve inventar uma configuração ausente, criar estrutura desnecessá
 O boot deve entregar quatro capacidades:
 
 1. **Orientação a objetivos:** Goals & Guardrails registrados e acessíveis aos agentes.
-2. **Base de conhecimento e agentes unificados:** Company Data e Area Data com fontes, versões, agentes e skills organizados.
+2. **Base de conhecimento e agentes unificados:** Company Data e Loop Data com fontes, versões, agentes e skills organizados.
 3. **Inteligência separada de execução:** Data, Analysis, Proposals e Definition separados de Execution.
-4. **Loop de aprendizado:** Execution Results alimentam Learning, que registra no Area Data e melhora o ciclo seguinte.
+4. **Loop de aprendizado:** Execution Results alimentam Learning, que registra no Loop Data e melhora o ciclo seguinte.
 
 Implemente o menor sistema que satisfaça esses requisitos. Não tente antecipar toda a estrutura futura da Company.
 
@@ -40,7 +40,7 @@ Leia integralmente, nesta ordem:
 2. `STANDARD_GUARDRAILS.md`;
 3. `COMPANY_STRUCTURE.md`;
 4. `EXPANSION_RULES.md`;
-5. `AREA_LIBRARY.md`;
+5. `LOOP_LIBRARY.md`;
 6. `AGENTS_INSTRUCTIONS.md`.
 
 Registre para cada documento:
@@ -64,7 +64,7 @@ Durante o boot, respeite:
 4. Goals & Guardrails específicos da Company;
 5. Company Structure;
 6. Expansion Rules;
-7. Area Library;
+7. Loop Library;
 8. Agents Instructions;
 9. plano aprovado;
 10. instruções adicionais.
@@ -172,7 +172,7 @@ ceo_bootstrap_config:
     record_all_mutations: true
   data_access:
     company_data: "read_write"
-    area_data: "read_by_default_write_when_authorized"
+    loop_data: "read_by_default_write_when_authorized"
     secrets: "references_only"
   failure_state: "BLOCKED"
 ```
@@ -236,7 +236,7 @@ Antes de implementar, verifique se possui acesso suficiente para, conforme a ver
 
 - ler o estado da Company;
 - ler e criar Goals;
-- ler e criar Projects ou equivalentes de Área;
+- ler e criar Projects ou equivalentes de Loop;
 - propor ou criar agentes;
 - definir reporting lines;
 - criar issues/tasks e documentos;
@@ -282,8 +282,8 @@ Se o modo não estiver explícito, assuma `PLAN`.
 - Não use automaticamente uma versão posterior de `main`.
 - Inspecione o estado atual antes de criar qualquer entidade.
 - Não duplique Goals, Projects, agentes, documentos ou tasks.
-- Comece com a menor quantidade de Áreas necessária.
-- Não transforme toda a Area Library em Areas ativas.
+- Comece com a menor quantidade de Loops necessária.
+- Não transforme toda a Loop Library em Loops ativos.
 - Não crie Project, agentes, heartbeat ou budget para item classificado como `PREPARE_NEXT` ou `LATER`.
 - Crie agentes persistentes do MVA; crie collectors, squads e executores sob demanda.
 - Não execute ação externa operacional durante o bootstrap, salvo autorização específica.
@@ -358,31 +358,31 @@ Em modo `PLAN`, produza um plano contendo:
 - CEO Bootstrap Config, diff e mapeamento para a instância;
 - budgets, permissions e approvals.
 
-### 12.2 Áreas
+### 12.2 Loops
 
-Aplique `EXPANSION_RULES.md` e consulte `AREA_LIBRARY.md`.
+Aplique `EXPANSION_RULES.md` e consulte `LOOP_LIBRARY.md`.
 
-Antes de propor uma Area:
+Antes de propor um Loop:
 
 1. produza o `Business Stage Assessment` conforme Expansion Rules;
-2. avalie todas as Areas da Area Library;
-3. classifique cada Area como `CREATE_NOW`, `PREPARE_NEXT`, `ABSORBED`, `COMPLETE`, `LATER`, `SKIP` ou `BLOCKED`;
+2. avalie todos os Loops da Loop Library;
+3. classifique cada Loop como `CREATE_NOW`, `PREPARE_NEXT`, `ABSORBED`, `COMPLETE`, `LATER`, `SKIP` ou `BLOCKED`;
 4. registre evidência, Goal relacionado, dependências e trigger de reavaliação;
-5. transforme somente itens `CREATE_NOW` em Area Candidates;
+5. transforme somente itens `CREATE_NOW` em Loop Candidates;
 6. valide cada candidata pelos critérios de formação e granularidade de `COMPANY_STRUCTURE.md`.
 
-Itens `PREPARE_NEXT` e `LATER` permanecem no Area Activation Plan dentro de Company Data. Eles não recebem estrutura operacional durante o boot.
+Itens `PREPARE_NEXT` e `LATER` permanecem no Loop Activation Plan dentro de Company Data. Eles não recebem estrutura operacional durante o boot.
 
-Para cada Área:
+Para cada Loop:
 
-- template de origem ou justificativa de Area customizada;
+- template de origem ou justificativa de Loop customizado;
 - trigger de ativação e evidências;
 - Purpose;
 - Scope e Out of Scope;
 - Goals e métricas;
 - guardrails e decision rights;
 - dependências;
-- Area Data;
+- Loop Data;
 - Project/Goal mapping no Paperclip;
 - agentes persistentes;
 - budget e skills iniciais;
@@ -397,7 +397,7 @@ Planeje:
 ```text
 Humano/Board
 └── CEO
-    └── Area Leader
+    └── Loop Leader
         ├── Data
         ├── Analysis
         ├── Proposals
@@ -424,12 +424,12 @@ Para cada agente persistente, inclua:
 - heartbeat;
 - outputs e stop conditions.
 
-### 12.5 Area Loop
+### 12.5 Funcionamento dos Loops
 
-Defina como cada Área realizará:
+Defina como cada Loop realizará:
 
 ```text
-Data → Analysis → Proposals → Definition → Approval → Execution → Learning → Area Data → Data
+Data → Analysis → Proposals → Definition → Approval → Execution → Learning → Loop Data → Data
 ```
 
 ### 12.6 Diff e riscos
@@ -511,25 +511,25 @@ source_manifest:
 - preserve a task de bootstrap até validação final;
 - não mantenha o conteúdo integral deste Company Start em todo heartbeat operacional.
 
-## 14. Fase 4 — Implementar as Áreas
+## 14. Fase 4 — Implementar os Loops
 
-Para cada Area Candidate aprovada e classificada como `CREATE_NOW`:
+Para cada Loop Candidate aprovado e classificado como `CREATE_NOW`:
 
-### 14.1 Criar unidade da Área
+### 14.1 Criar unidade do Loop
 
-- crie Project e Goal da Área ou equivalentes aprovados;
-- conecte Goal da Área à Goal Tree;
-- crie `Area Settings`;
-- crie Area Database, Learning Log e Files;
+- crie Project e Goal do Loop ou equivalentes aprovados;
+- conecte Goal do Loop à Goal Tree;
+- crie `Loop Settings`;
+- crie Loop Database, Learning Log e Files;
 - registre estado `DRAFT`.
 
-### 14.2 Area Settings
+### 14.2 Loop Settings
 
 Preencha:
 
 ```yaml
-area:
-  id: "{{area_id}}"
+loop:
+  id: "{{loop_id}}"
   name: "{{name}}"
   description: "{{description}}"
   purpose: "{{purpose}}"
@@ -550,20 +550,20 @@ area:
   version: "1.0"
 ```
 
-Se Purpose, Scope, Goals ou Success Metrics estiverem insuficientes, mantenha a Área em `DRAFT`.
+Se Purpose, Scope, Goals ou Success Metrics estiverem insuficientes, mantenha o Loop em `DRAFT`.
 
-### 14.3 Criar Area Leader
+### 14.3 Criar Loop Leader
 
 - gere Agent Instance Spec;
 - defina reports-to CEO;
-- atribua Goals da Área;
-- conceda acesso apropriado a Company Data e Area Data;
+- atribua Goals do Loop;
+- conceda acesso apropriado a Company Data e Loop Data;
 - configure budget, heartbeat e skills;
 - ative somente após validação.
 
-### 14.4 Criar agentes persistentes do Area Loop
+### 14.4 Criar agentes persistentes do Loop
 
-Crie sob o Area Leader:
+Crie sob o Loop Leader:
 
 - Data;
 - Analysis;
@@ -577,9 +577,9 @@ Use `AGENTS_INSTRUCTIONS.md`. Não copie o documento inteiro para as instruçõe
 Cada agente deve possuir:
 
 - papel principal;
-- reports-to Area Leader;
-- Scope & Goals da Área;
-- referências a Company/Area Data;
+- reports-to Loop Leader;
+- Scope & Goals do Loop;
+- referências a Company Data/Loop Data;
 - outputs e handoffs;
 - permissions mínimas;
 - budget e heartbeat;
@@ -597,11 +597,11 @@ Não crie antecipadamente sem necessidade:
 
 Valide apenas se Data e Execution Leader possuem permissão/processo para solicitar ou criar essas estruturas quando uma task real exigir.
 
-### 14.6 Ativar Área
+### 14.6 Ativar Loop
 
-Mude a Área de `DRAFT` para `READY` e depois `ACTIVE` somente quando:
+Mude o Loop de `DRAFT` para `READY` e depois `ACTIVE` somente quando:
 
-- Area Settings estiver completo;
+- Loop Settings estiver completo;
 - reporting lines estiverem válidos;
 - agentes persistentes estiverem configurados;
 - budget e heartbeat estiverem definidos;
@@ -609,20 +609,20 @@ Mude a Área de `DRAFT` para `READY` e depois `ACTIVE` somente quando:
 - approval gate estiver configurado;
 - o loop puder registrar outputs.
 
-## 15. Fase 5 — Inicializar o Area Loop
+## 15. Fase 5 — Inicializar os Loops
 
-Crie uma task inicial controlada para cada Área:
+Crie uma task inicial controlada para cada Loop:
 
 ```markdown
-# Initialize Area Loop
+# Initialize Loop
 
 Valide Scope & Goals, fontes de dados, métricas, agentes, handoffs,
-decision rights e approval gate desta Área.
+decision rights e approval gate deste Loop.
 
 Não realize ação operacional externa.
 
 Produza:
-- Area Readiness Report;
+- Loop Readiness Report;
 - primeira Intelligence Request;
 - lacunas de dados e skills;
 - riscos e approvals pendentes;
@@ -631,17 +631,17 @@ Produza:
 
 Quando houver uma pergunta real aprovada, o primeiro ciclo segue:
 
-1. Area Leader cria Intelligence Request.
-2. Data consulta Area Data e coordena coleta.
+1. Loop Leader cria Intelligence Request.
+2. Data consulta Loop Data e coordena coleta.
 3. Analysis produz Analytical Brief.
 4. Proposals produz Proposal Set.
 5. Definition produz Decision Record.
-6. Area Leader/CEO/humano satisfaz approval gate.
+6. Loop Leader/CEO/humano satisfaz approval gate.
 7. Execution Leader cria tasks e squads.
 8. Executor Agents produzem resultados.
 9. Execution Leader consolida Execution Result.
 10. Learning produz Learning Record.
-11. Learning registra em Area Data.
+11. Learning registra em Loop Data.
 12. O próximo ciclo reutiliza o aprendizado.
 
 ## 16. Fase 6 — Validar o MVA
@@ -651,7 +651,7 @@ Execute os testes abaixo.
 ### 16.1 Orientação a objetivos
 
 - [ ] Main Goal registrado;
-- [ ] Goals das Áreas ligados à Goal Tree;
+- [ ] Goals dos Loops ligados à Goal Tree;
 - [ ] agentes conseguem localizar Goals & Guardrails;
 - [ ] task de teste possui ancestry até o Main Goal.
 
@@ -660,14 +660,14 @@ Execute os testes abaixo.
 - [ ] Company Data existe;
 - [ ] Source Manifest registra commit;
 - [ ] CEO Config Record registra config desejado, aplicado e adaptações;
-- [ ] cada Área possui Area Data;
+- [ ] cada Loop possui Loop Data;
 - [ ] instruções referenciam fontes corretas;
 - [ ] skills e versões estão registradas;
 - [ ] nenhum agente depende de caminho inexistente.
 
 ### 16.3 Inteligência e execução
 
-- [ ] Area Leader configurado;
+- [ ] Loop Leader configurado;
 - [ ] Data, Analysis, Proposals e Definition existem;
 - [ ] Execution Leader existe;
 - [ ] reporting lines estão corretos;
@@ -676,7 +676,7 @@ Execute os testes abaixo.
 
 ### 16.4 Aprendizado
 
-- [ ] Learning existe e reporta ao Area Leader;
+- [ ] Learning existe e reporta ao Loop Leader;
 - [ ] Learning recebe Decision/Execution Records;
 - [ ] Learning Log existe;
 - [ ] Learning não pode alterar estrutura ou guardrails sozinho;
@@ -693,7 +693,7 @@ Execute os testes abaixo.
 - [ ] concorrência máxima do CEO configurada como 1 ou adaptação equivalente registrada;
 - [ ] adapter, model, workspace e instructions bundle do CEO validados;
 - [ ] tasks duplicadas não foram criadas;
-- [ ] Company e Areas possuem estados coerentes;
+- [ ] Company e Loops possuem estados coerentes;
 - [ ] activity e outputs são rastreáveis.
 
 Falha crítica mantém a Company em `BOOTSTRAPPING`, `BLOCKED` ou `DEGRADED` conforme aplicável.
@@ -713,7 +713,7 @@ company_start_report:
   final_state: "OPERATIONAL | BOOTSTRAPPING | BLOCKED | DEGRADED"
   main_goal: "{{goal_id}}"
   business_stage_assessment: "{{assessment_id}}"
-  area_activation_plan: "{{plan_id_and_version}}"
+  loop_activation_plan: "{{plan_id_and_version}}"
   company_data_status: "{{status}}"
   ceo_config_record: "{{record_id}}"
   ceo_runtime_validation:
@@ -725,8 +725,8 @@ company_start_report:
     max_concurrent_runs: "{{value_or_adaptation}}"
     budget: "{{approved_budget_and_usage}}"
     permissions: "{{validation_result}}"
-  areas:
-    - area_id: "{{id}}"
+  loops:
+    - loop_id: "{{id}}"
       status: "{{status}}"
       goal_id: "{{goal_id}}"
       persistent_agents: "{{agent_ids}}"
@@ -813,11 +813,11 @@ Após o MVA, o CEO e o usuário podem melhorar a Company por evidência:
 - adicionar skills e fontes;
 - criar collectors persistentes;
 - especializar agentes;
-- criar novas Áreas quando seus triggers de ativação forem satisfeitos;
+- criar novos Loops quando seus triggers de ativação forem satisfeitos;
 - dividir scopes amplos;
 - adicionar automações e plugins;
 - ajustar budgets e heartbeats;
 - ampliar autonomia com guardrails;
-- incorporar aprendizados cross-area.
+- incorporar aprendizados cross-loop.
 
 Essas melhorias não fazem parte do Company Start inicial, salvo quando aprovadas como requisito explícito.

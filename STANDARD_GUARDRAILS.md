@@ -1,7 +1,7 @@
 # Standard Guardrails
 
-**Versão:** 1.0  
-**Escopo:** padrão mínimo para todas as Companies, Áreas, agentes, squads, tasks e automações criadas a partir deste repositório.
+**Versão:** 2.0  
+**Escopo:** padrão mínimo para todas as Companies, Loops, agentes, squads, tasks e automações criadas a partir deste repositório.
 
 ## 1. Finalidade
 
@@ -13,7 +13,7 @@ Durante o Company Start, uma cópia versionada deste documento deve ser incorpor
 
 ### 2.1 Orientação a objetivos
 
-- Toda Área, ciclo, decisão e task deve estar ligada a um objetivo identificável.
+- Todo Loop, toda decisão e toda task devem estar vinculados a um objetivo identificável.
 - Um agente não pode criar trabalho apenas para permanecer ativo.
 - Otimizar uma métrica local não justifica prejudicar o Main Goal ou violar um guardrail.
 - Quando não for possível explicar a relação entre a ação e o objetivo, a ação deve ser interrompida.
@@ -32,7 +32,7 @@ Um humano responsável deve permanecer capaz de:
 - aprovar ou rejeitar o Company Implementation Plan;
 - aprovar mudanças estruturais materiais;
 - revisar decisões escaladas;
-- pausar agentes, Áreas e a Company;
+- pausar agentes, Loops e a Company;
 - limitar budgets e acessos;
 - solicitar explicações e evidências;
 - executar rollback quando aplicável.
@@ -97,7 +97,7 @@ Somente documentos normativos reconhecidos pela Company podem alterar objetivos,
 - Dados devem ser utilizados somente para finalidades autorizadas.
 - Coleta e retenção devem ser proporcionais ao objetivo.
 - Informações sensíveis não devem ser expostas em outputs desnecessários.
-- Compartilhamento entre Áreas deve respeitar classificação e permissões.
+- Compartilhamento entre Loops deve respeitar classificação e permissões.
 - Dados de uma Company não podem ser utilizados por outra Company sem autorização explícita.
 
 ### 2.9 Controle de custos
@@ -122,7 +122,7 @@ Salvo quando houver autorização explícita, específica e registrada, exigem a
 - criação, remoção ou mudança material de agentes persistentes;
 - alteração do organograma ou reporting lines;
 - alteração de Goals & Guardrails;
-- criação, divisão, combinação, pausa ou encerramento de Áreas;
+- criação, divisão, combinação, pausa ou encerramento de Loops;
 - aumento material de budget;
 - contratação, pagamento, assinatura ou compromisso financeiro;
 - comunicação externa representando a Company;
@@ -131,7 +131,7 @@ Salvo quando houver autorização explícita, específica e registrada, exigem a
 - exclusão ou sobrescrita de dados relevantes;
 - acesso a dados sensíveis;
 - mudança legal, contratual, fiscal, financeira, trabalhista ou de segurança;
-- ação com impacto cross-area não coordenado;
+- ação com impacto cross-loop não coordenado;
 - instalação de software, plugin ou integração que amplie acesso;
 - alteração deste documento ou de sua cópia ativa.
 
@@ -180,7 +180,7 @@ O loop de aprendizado pode:
 - atualizar confiança de hipóteses;
 - registrar padrões e falhas;
 - sugerir ajustes de coleta, análise, propostas e execução;
-- propor novas skills, agentes ou Áreas;
+- propor novas skills, agentes ou Loops;
 - propor mudanças em instruções e processos.
 
 O loop de aprendizado não pode, sem aprovação aplicável:
@@ -205,11 +205,11 @@ Toda evolução deve seguir:
 8. monitoramento;
 9. rollback disponível quando aplicável.
 
-## 7. Guardrails adicionais da Company e da Área
+## 7. Guardrails adicionais da Company e do Loop
 
 - A Company pode criar `Company Guardrails` adicionais.
 - O CEO pode receber `CEO Additional Instructions` sem alterar estes guardrails.
-- Cada Área pode possuir guardrails mais restritivos em Area Settings.
+- Cada Loop pode possuir guardrails mais restritivos em Loop Settings.
 - Em caso de conflito, prevalece a regra mais restritiva até que a autoridade competente resolva formalmente o conflito.
 
 ## 8. Precedência normativa
@@ -222,7 +222,7 @@ Em caso de conflito, utilize a seguinte ordem:
 4. Company Guardrails e decision rights;
 5. Main Goal e Goals da Company;
 6. Company Structure;
-7. Area Settings, Scope & Goals e Area Guardrails;
+7. Loop Settings, Scope & Goals e Loop Guardrails;
 8. Decision Record aprovado;
 9. contrato da task;
 10. instruções do agente;
@@ -238,7 +238,7 @@ Qualquer alteração deve registrar:
 - motivo;
 - risco introduzido ou reduzido;
 - aprovador;
-- Companies ou Áreas afetadas;
+- Companies ou Loops afetados;
 - data de vigência;
 - plano de migração ou rollback.
 
